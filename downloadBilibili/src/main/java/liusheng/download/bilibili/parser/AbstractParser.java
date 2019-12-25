@@ -47,7 +47,6 @@ public class AbstractParser<T> implements Parser<String, T> {
         }
         String script = content;
 
-        logger.info(script);
 
         return gson.fromJson(script, clazz);
     }

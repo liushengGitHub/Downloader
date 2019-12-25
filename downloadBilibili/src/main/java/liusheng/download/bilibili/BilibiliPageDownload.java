@@ -6,6 +6,7 @@ import liusheng.download.bilibili.entity.AdapterParam;
 import liusheng.download.bilibili.entity.NewVideoBean;
 import liusheng.download.bilibili.entity.OldVideoBean;
 import liusheng.download.bilibili.entity.PagesBean;
+import liusheng.downloadCore.DownloadList;
 import liusheng.downloadCore.SubPageDownload;
 import liusheng.downloadCore.entity.AbstractVideoBean;
 import liusheng.downloadCore.entity.DownloadItemPaneEntity;
@@ -23,11 +24,14 @@ import java.io.IOException;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicLong;
 
+import static liusheng.downloadCore.executor.FailListExecutorService.getTaskQueue;
+
 public class BilibiliPageDownload implements SubPageDownload {
     private DownloadingPaneContainer downloadingPaneContainer;
     private final Logger logger = Logger.getLogger(BilibiliPageDownload.class);
     private final Semaphore semaphore;
     private final PagesBean pagesBean;
+
     public BilibiliPageDownload(DownloadingPaneContainer downloadingPaneContainer, Semaphore semaphore, PagesBean pagesBean) {
         this.downloadingPaneContainer = downloadingPaneContainer;
         this.semaphore = semaphore;
@@ -56,6 +60,7 @@ public class BilibiliPageDownload implements SubPageDownload {
         // 应该鼬我来产生对象
 
 
+        // 添加到下载列表
         Platform.runLater(() -> {
             listView.getItems().add(e1);
         });
@@ -69,6 +74,7 @@ public class BilibiliPageDownload implements SubPageDownload {
                 //name 是文件的名字 videoName是这个视频目录的名字
                 setAbstractProperty(downloadingPaneContainer, subDir, listView, abstractVideoBean, fileName, vUrl, downloadItemPane, quality);
 
+                // 重试
                 downloadItemPane.getRetry().setOnAction(e -> {
                     int state = downloadItemPane.getLocal().getState();
                     if (state == DownloaderController.EXCEPTION) {
@@ -84,20 +90,45 @@ public class BilibiliPageDownload implements SubPageDownload {
 
                 //
                 e1.setAbstractVideoBean(abstractVideoBean);
-                //
+                // 放入到任务队列
+                getTaskQueue().add(() -> {
+                    // 任务加1
 
-                if (abstractVideoBean instanceof NewVideoBean) {
-                    new NewVideoBeanDownloader(semaphore).download((NewVideoBean) abstractVideoBean);
-                } else if (abstractVideoBean instanceof OldVideoBean) {
-                    new OldVideoBeanDownloader(semaphore).download((OldVideoBean) abstractVideoBean);
-                } else {
-                    throw new IllegalArgumentException();
-                }
+                    try {
+                        logger.info("开始下载 : " + abstractVideoBean.getRefererUrl());
+                        if (abstractVideoBean instanceof NewVideoBean) {
+                            new NewVideoBeanDownloader(semaphore).download((NewVideoBean) abstractVideoBean);
+                        } else if (abstractVideoBean instanceof OldVideoBean) {
+                            new OldVideoBeanDownloader(semaphore).download((OldVideoBean) abstractVideoBean);
+                        } else {
+                            throw new IllegalArgumentException();
+                        }
+                        // 下载成功记录数据
+                        recordUrl(vUrl);
+
+                        logger.info("下载成功 : " + abstractVideoBean.getRefererUrl());
+                    } catch (Throwable throwable) {
+                        logger.info("下载成功 : " + abstractVideoBean.getRefererUrl() + " Exception : " + throwable);
+                    } finally {
+                        // 任务减1
+                        FailListExecutorService.getCurrentTaskNumber().getAndDecrement();
+                    }
+                });
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
         }));
+    }
+
+    private void recordUrl(String vUrl) {
+        DownloadList downloadList = DownloadList.downloadList();
+        synchronized (downloadList) {
+            downloadList.getUnDownloadList().remove(vUrl);
+            downloadList.getDownloadedList().add(vUrl);
+        }
     }
 
     private AbstractVideoBean ensureGetAbstractVideoBean(String vUrl, AdapterParam param) {
@@ -117,7 +148,7 @@ public class BilibiliPageDownload implements SubPageDownload {
     private void setAbstractProperty(DownloadingPaneContainer downloadingPaneContainer, String videoName, JFXListView<DownloadItemPaneEntity> listView1, AbstractVideoBean abstractVideoBean, String name, String vUrl, DownloadItemPane downloadItemPane, int quality) {
         abstractVideoBean.setName(StringUtils.fileNameHandle(name));
         abstractVideoBean.setDirFile(new File("video", videoName));
-        abstractVideoBean.setUrl(vUrl);
+        abstractVideoBean.setRefererUrl(vUrl);
         abstractVideoBean.setSize(new AtomicLong());
         abstractVideoBean.setAllSize(new AtomicLong());
         abstractVideoBean.setDownloadPane(downloadingPaneContainer.getDownloadPane());

@@ -11,7 +11,7 @@ public abstract class AbstractVideoBean {
     // 文件夹
     transient File dirFile;
     // 每 P url
-    transient String url;
+    transient String refererUrl;
     // 文件名
     transient String name;
     private transient int quality;
@@ -78,12 +78,12 @@ public abstract class AbstractVideoBean {
         this.dirFile = dirFile;
     }
 
-    public String getUrl() {
-        return url;
+    public String getRefererUrl() {
+        return refererUrl;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setRefererUrl(String refererUrl) {
+        this.refererUrl = refererUrl;
     }
 
     public String getName() {

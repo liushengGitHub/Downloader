@@ -77,6 +77,8 @@ public class RetryDownloader implements Downloader<DownloadEntity> {
             if (Objects.isNull(error.e)) {
                 return error;
             }
+            // 上次的位置开始下载
+            start = error.sum;
             parts.getAndDecrement();
         }
         return error;

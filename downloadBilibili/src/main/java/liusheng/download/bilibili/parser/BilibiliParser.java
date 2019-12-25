@@ -3,17 +3,19 @@ package liusheng.download.bilibili.parser;
 import com.jfoenix.controls.JFXListView;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.Pagination;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
-import liusheng.download.bilibili.pane.PaginationVBox;
-import liusheng.download.bilibili.pane.SearchItemController;
-import liusheng.download.bilibili.pane.SearchItemPane;
+import liusheng.download.bilibili.BilibiliDownloadAction;
 import liusheng.download.bilibili.search.BilibiliSearchInfoParser;
 import liusheng.download.bilibili.search.BilibiliSearchPageParser;
 import liusheng.downloadCore.executor.FailListExecutorService;
 import liusheng.downloadCore.executor.FailTask;
 import liusheng.downloadCore.pane.DownloadingPane;
+import liusheng.downloadCore.pane.PaginationVBox;
+import liusheng.downloadCore.pane.SearchItemController;
+import liusheng.downloadCore.pane.SearchItemPane;
 import liusheng.downloadCore.search.SearchParam;
 import liusheng.downloadCore.util.BindUtils;
 import liusheng.downloadInterface.Parser;
@@ -67,6 +69,24 @@ public class BilibiliParser implements Parser<Object, Pane> {
                 listViewMap.computeIfAbsent(0, i -> {
                     JFXListView<SearchItemPane> listView = new JFXListView<>();
 
+                  /*  listView.setCellFactory(ls -> {
+                        return new ListCell<SearchItemPane>() {
+
+                            @Override
+                            protected void updateItem(SearchItemPane item, boolean empty) {
+                                super.updateItem(item, empty);
+
+                                if (!empty && Objects.nonNull(item)) {
+                                    setStyle("-fx-background-color:transparent");
+                                    item. setStyle("-fx-background-color:transparent");
+                                    setGraphic(item);
+                                } else {
+                                    setGraphic(null);
+                                }
+                            }
+                        };
+                    });*/
+
                     Platform.runLater(() -> {
                         setListView(listView, items, pagination, main, downloadingPane);
                     });
@@ -75,7 +95,6 @@ public class BilibiliParser implements Parser<Object, Pane> {
 
                 Platform.runLater(() -> {
                     pagination.setPageCount(searchPage.getPages());
-
                     pagination.setPageFactory(index -> {
 
                         JFXListView<SearchItemPane> listView = listViewMap.get(index);
@@ -92,9 +111,16 @@ public class BilibiliParser implements Parser<Object, Pane> {
                             try {
                                 Object o1 = infoParser.parse(format);
                                 SearchPage searchPage1 = pageParser.parse(o1);
-                                Platform.runLater(() -> {
-                                    setListView(finalListView, searchPage1.getItems(), pagination, main, downloadingPane);
-                                });
+                                List<SearchItem> items1 = searchPage1.getItems();
+                                if (items1 != null && !items1.isEmpty()) {
+                                    Platform.runLater(() -> {
+                                        setListView(finalListView, items1, pagination, main, downloadingPane);
+                                    });
+                                } else {
+                                    Platform.runLater(() -> {
+                                        pagination.setPageCount(index + 1);
+                                    });
+                                }
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
@@ -116,7 +142,8 @@ public class BilibiliParser implements Parser<Object, Pane> {
         List<SearchItemPane> searchItemPanes = IntStream.range(0, items.size()).boxed()
                 .map(i -> {
                     SearchItem item = items.get(i);
-                    SearchItemPane searchItemPane = new SearchItemPane(i, item, pane.getDownloadingPaneContainer());
+                    SearchItemPane searchItemPane = new SearchItemPane(i, item, pane.getDownloadingPaneContainer(),
+                            new BilibiliDownloadAction(item.getHref(), pane.getDownloadingPaneContainer()));
 
                     BindUtils.bind(searchItemPane.prefHeightProperty(), listView.heightProperty().multiply(0.20));
                     // 不让横向滚动条出现

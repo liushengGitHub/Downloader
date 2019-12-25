@@ -106,12 +106,9 @@ public class BilibiliDownloadProcessor implements DownloadProcessor {
                         unDownloadList.add(vUrl);
                     }
                     //添加到为下载的列表中
-                    pageDownload.download(vUrl, qualityList.size() <= qualityIndex ? 0 : qualityList.get(qualityIndex), videoName, name);
+                    pageDownload.download(vUrl, qualityList.size() <= qualityIndex ? 0 : qualityList.get(qualityIndex),  name,videoName);
 
-                    synchronized (downloadList) {
-                        unDownloadList.remove(vUrl);
-                        downloadedList.add(vUrl);
-                    }
+
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }

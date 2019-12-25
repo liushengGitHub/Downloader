@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DownloadManhuadui:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DownloadManhuadui_jar</output-path>
+    <root id="archive" name="DownloadManhuadui.jar">
+      <element id="module-output" name="DownloadManhuadui" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/downloadBilibili/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -59,6 +59,7 @@ public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
                     if (!(pane instanceof DownloadItemPane)) throw new IllegalArgumentException();
 
                     DownloadItemPane itemPane = (DownloadItemPane) pane;
+                    // 获取下载控制器
                     DownloaderController itemPaneLocal = itemPane.getLocal();
                     try {
                         List<DashBean.AudioBean> audioBeanList = dashBean.getAudio();
@@ -74,7 +75,7 @@ public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
                         }
                         int quality = newVideoBean.getQuality();
                         String fileName = newVideoBean.getName();
-                        String refererUrl = newVideoBean.getUrl();
+                        String refererUrl = newVideoBean.getRefererUrl();
                         File dirFile = newVideoBean.getDirFile();
 
 
@@ -107,23 +108,19 @@ public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
                         AtomicLong allSize = newVideoBean.getAllSize();
                         AtomicInteger parts = newVideoBean.getPartSize();
                         StateCountDownLatch state = new StateCountDownLatch(1);
+
+                        // 设置开始执行
+                        itemPaneLocal.setState(DownloaderController.EXECUTE);
+
                         FailListExecutorService.commonExecutorServicehelp().execute(() -> {
                             try {
                                 RetryDownloader retryDownloader = new RetryDownloader(itemPaneLocal, size, allSize, parts);
                                 DownloadEntity downloadEntity = new DownloadEntity(refererUrl, vbUrl, vbUrls, flvPathTemp, dirPath, 3);
-
-                                itemPaneLocal.setState(DownloaderController.EXECUTE);
-                                Error error = null;
-                                for (int i = 0; i < 3; i++) {
-                                    error = retryDownloader.download(downloadEntity);
-                                    if (Objects.isNull(error.getE())) {
-                                        return;
-                                    }
-                                    retryDownloader.setStart(error.getSum());
-                                }
+                                Error error = retryDownloader.download(downloadEntity);
                                 // 失败
-
-                                throw new RuntimeException(error.getE());
+                                if (Objects.nonNull(error.getE())) {
+                                    throw new RuntimeException(error.getE());
+                                }
                             } catch (Throwable e) {
                                 state.error = true;
                                 throw new RuntimeException(e);
@@ -136,10 +133,17 @@ public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
                         List<String> aBUrls = audioBeanList.get(0).getBackupUrl();
                         RetryDownloader retryDownloader = new RetryDownloader(itemPaneLocal, size, allSize, parts);
                         DownloadEntity downloadEntity = new DownloadEntity(refererUrl, aBUrl, aBUrls, mp3Path, dirPath, 3);
-                        retryDownloader.download(downloadEntity);
+                        Error error = retryDownloader.download(downloadEntity);
+                        // 音频文件 下载失败
+                        if (Objects.nonNull(error.getE())) {
+                            throw new RuntimeException(error.getE());
+                        }
                         // 等待 异步线程的完成
                         state.await();
+
+                        // 用户是否取消了
                         if (itemPaneLocal.getState() == DownloaderController.CANCEL) {
+                            // 从下载列表中移除
                             Platform.runLater(() -> {
                                 removeListItem(newVideoBean);
                             });
@@ -150,7 +154,6 @@ public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
                         // 到达这里说明下载完成,提示一下
                         Label stateLabel = itemPane.getStateLabel();
                         if (state.error) {
-
                             itemPaneLocal.setState(DownloaderController.EXCEPTION);
                             Platform.runLater(() -> {
                                 stateLabel.setText("下载失败.. 点击重试");

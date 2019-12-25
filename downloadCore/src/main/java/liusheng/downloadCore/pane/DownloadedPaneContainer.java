@@ -1,12 +1,19 @@
 package liusheng.downloadCore.pane;
 
+import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXListView;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import liusheng.downloadCore.entity.AbstractVideoBean;
 import liusheng.downloadCore.entity.DownloadItemPaneEntity;
+import liusheng.downloadCore.player.DefaultMediaPlayerViewVBox;
 import liusheng.downloadCore.util.BindUtils;
 
+import java.net.MalformedURLException;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -66,7 +73,29 @@ public class DownloadedPaneContainer extends VBox {
                     if (!empty && item != null) {
                        /* int index = getIndex();
                         Node pane = ((AbstractVideoBean) indeies.get(index)).getPane();*/
-                        setGraphic(new Label(item.getAbstractVideoBean().getUrl()));
+                        AbstractVideoBean abstractVideoBean = item.getAbstractVideoBean();
+                        Label label = new Label(abstractVideoBean.getRefererUrl());
+
+                        label.setOnMouseClicked(e->{
+                            try {
+                                DefaultMediaPlayerViewVBox defaultMediaPlayerViewVBox = new DefaultMediaPlayerViewVBox(Paths.get(abstractVideoBean.getDirFile().toString(),
+                                        abstractVideoBean.getName() + ".mp4"
+                                ).toUri().toURL().toString());
+
+                                Stage stage = new Stage();
+
+                                stage.setOnCloseRequest(e1->{
+                                    defaultMediaPlayerViewVBox.getMediaView().getMediaPlayer().stop();
+                                });
+
+                                stage.setScene(new Scene(defaultMediaPlayerViewVBox,700,400));
+                                stage.show();
+                            } catch (MalformedURLException ex) {
+                                ex.printStackTrace();
+                            }
+                        });
+
+                        setGraphic(label);
                     } else if (empty) {
                         setGraphic(null);
                     }

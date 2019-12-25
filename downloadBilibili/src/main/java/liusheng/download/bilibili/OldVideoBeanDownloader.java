@@ -12,6 +12,7 @@ import liusheng.downloadCore.Downloader;
 import liusheng.downloadCore.Error;
 import liusheng.downloadCore.RetryDownloader;
 import liusheng.downloadCore.entity.DownloadItemPaneEntity;
+import liusheng.downloadCore.executor.FailListExecutorService;
 import liusheng.downloadCore.pane.DownloadItemPane;
 import liusheng.downloadInterface.DownloaderController;
 import org.apache.log4j.Logger;
@@ -20,10 +21,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
@@ -50,7 +48,7 @@ public class OldVideoBeanDownloader implements Downloader<OldVideoBean> {
                         DownloadItemPane itemPane = (DownloadItemPane) pane;
                         if (durlBeans.isEmpty()) return;
                         boolean b = durlBeans.size() > 1;
-                        String refererUrl = oldVideoBean.getUrl();
+                        String refererUrl = oldVideoBean.getRefererUrl();
 
                         AtomicLong size = oldVideoBean.getSize();
                         AtomicLong allSize = oldVideoBean.getAllSize();
@@ -65,40 +63,58 @@ public class OldVideoBeanDownloader implements Downloader<OldVideoBean> {
                             Files.createDirectories(dirPath);
                         }
                         Label stateLabel = itemPane.getStateLabel();
-                        // 下载这个视频的所有分段 (多线程)
-                        durlBeans.stream().parallel().forEach(durlBean -> {
+                        // 下载这个视频的所有分段 (多线程) ,是由bug 的  如果在
+                        // 非启动线抛出的异常,会捕获不到的
+                        // 用于记录下载成功的数量
+                        AtomicInteger successNumber = new AtomicInteger();
+
+                        durlBeans.stream().forEach(durlBean -> {
+                            int order = durlBean.getOrder();
+                            String videoUrl = durlBean.getUrl();
+
+                            List<String> backup_url = durlBean.getBackup_url() == null ? Collections.emptyList() : (List<String>) durlBean.getBackup_url();
+
+                            Path filePath = dirPath.resolve((b ? order + "_" : "") + name + ".flv");
+
+
+                            // 加入合并的路径,失败的话就删除
+                            paths.add(filePath.toString());
 
                             try {
-                                int order = durlBean.getOrder();
-                                String videoUrl = durlBean.getUrl();
-
-                                List<String> backup_url = durlBean.getBackup_url() == null ? Collections.emptyList() : (List<String>) durlBean.getBackup_url();
-
-                                Path filePath = dirPath.resolve((b ? order + "_" : "") + name + ".flv");
-
-                                paths.add(filePath.toString());
-
 
                                 RetryDownloader retryDownloader = new RetryDownloader(itemPaneLocal, size, allSize, parts);
-                                retryDownloader.download(new DownloadEntity(refererUrl, videoUrl, backup_url, filePath, dirPath, 3));
 
+                                Error error = retryDownloader.download(new DownloadEntity(refererUrl, videoUrl, backup_url, filePath, dirPath, 3));
+
+
+                                // 用户取消了
                                 if (itemPaneLocal.getState() == DownloaderController.CANCEL) {
                                     Platform.runLater(() -> {
                                         removeListItem(oldVideoBean);
                                     });
-                                    throw new RuntimeException();
+
+                                    return;
                                 }
+
+                                // 下载成功
+                                if (Objects.isNull(error.getE())) {
+                                    successNumber.getAndIncrement();
+                                }
+
                             } catch (Throwable e) {
 
                                 itemPaneLocal.setState(DownloaderController.EXCEPTION);
                                 Platform.runLater(() -> {
-                                    stateLabel.setText("下载失败..正在重试");
+                                    stateLabel.setText("下载失败...");
                                 });
-                                throw new RuntimeException(e);
                             }
 
                         });
 
+                        if (successNumber.get() < oldVideoBean.getParts()) {
+                            throw  new RuntimeException("下载失败");
+                        }
+                        // 下载成功
                         itemPaneLocal.setState(DownloaderController.FINISHED);
 
                         Platform.runLater(() -> {
@@ -113,7 +129,7 @@ public class OldVideoBeanDownloader implements Downloader<OldVideoBean> {
                                 new MergeFile(paths, name, dirPath.toString(), semaphore).run();
                             } catch (Exception e) {
                                 Platform.runLater(() -> {
-                                    stateLabel.setText("合并失败..正在重试");
+                                    stateLabel.setText("合并失败..");
                                 });
                             } finally {
                                 semaphore.release();

@@ -32,9 +32,9 @@ public class PageInfoParser implements Parser<String, PagesBean> {
                 .get();
 
         String script = document.select("script").stream().map(Element::html).filter(h -> h.contains(PREFIX)).findFirst().get().substring(PREFIX.length());
-        int i = script.lastIndexOf("]};(function(){");
+        int i = script.lastIndexOf(";(function()");
         if (i == -1) throw new RuntimeException();
-        PagesBean pageBean = gson.fromJson(script.substring(0, i + 2), PagesBean.class);
+        PagesBean pageBean = gson.fromJson(script.substring(0, i ), PagesBean.class);
         return pageBean;
     }
 }
