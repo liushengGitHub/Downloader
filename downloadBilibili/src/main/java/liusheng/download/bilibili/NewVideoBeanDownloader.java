@@ -188,7 +188,8 @@ public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
 
 
                     } catch (Throwable throwable) {
-
+                        throw new RuntimeException(throwable);
+                    } finally {
                         // 取消音频的下载,并删除 ,如果下载完成或者下载失败则无效
                         // 失败则删除文件 和抛出异常
                         try {
@@ -199,7 +200,6 @@ public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
                         } catch (IOException e) {
                             logger.debug("文件删除失败");
                         }
-
                     }
                 });
         return null;

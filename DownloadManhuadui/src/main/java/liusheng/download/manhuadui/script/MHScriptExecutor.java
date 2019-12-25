@@ -5,6 +5,7 @@ import liusheng.download.manhuadui.bean.Image;
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class MHScriptExecutor implements JSScriptExecutor {
     private final ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
@@ -41,14 +43,17 @@ public class MHScriptExecutor implements JSScriptExecutor {
             group = group.substring(1, group.length() - 1).replace("\\", "");
             images.add(group);
         }
+        // 获取真实的地址
+        String[] array = images.toArray(new String[0]);
+        IntStream.rangeClosed(1, images.size()).forEach(i -> {
+            try {
+                String imgUrl = (String) invocable.invokeFunction("getChapterImage", array, i);
+                imageLinkedList.add(new Image(imgUrl));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
 
-        String path = (String) engine.get("chapterPath");
-
-        if (images.size() > 0 && (images.get(0).startsWith("https:" )|| images.get(0).startsWith("http:" ))) {
-            imageLinkedList.addAll(images.stream().map(image -> image.replace("\\", "")).map(image -> new Image(image)).collect(Collectors.toList()));
-        } else {
-            imageLinkedList.addAll(images.stream().map(image -> PREFIX + path + image).map(image -> new Image(image)).collect(Collectors.toList()));
-        }
     }
 
     public List<Image> getChapterImages() {

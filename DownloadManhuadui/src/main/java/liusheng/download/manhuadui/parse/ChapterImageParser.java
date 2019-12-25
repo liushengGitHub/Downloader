@@ -12,8 +12,6 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 
 public class ChapterImageParser extends AbstractParser<List<Image>> {
-
-    private final MHScriptExecutor mhScriptExecutor = new MHScriptExecutor();
     @Override
     protected List<Image> trulyParse(Document document) {
 
@@ -27,6 +25,7 @@ public class ChapterImageParser extends AbstractParser<List<Image>> {
                 .map(e-> e.html())
                 .ifPresent(html-> {
                     try {
+                        MHScriptExecutor mhScriptExecutor = new MHScriptExecutor();
                         mhScriptExecutor.execute(html);
                         list.addAll( mhScriptExecutor.getChapterImages());
                     } catch (Exception e) {

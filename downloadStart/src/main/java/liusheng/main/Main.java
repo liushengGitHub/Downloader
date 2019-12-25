@@ -55,35 +55,95 @@ public class Main extends Application {
         MenuBar menuBar = new MenuBar();
 
 
-
-        menuBar.setStyle("-fx-background-color: transparent");
-        Menu fileMenu = new Menu("_File");
-
-        fileMenu.setStyle("-fx-background-color: transparent");
-
-        MenuItem exitMenuItem = new MenuItem("Exit");
-
-        exitMenuItem.setStyle("-fx-background-color:transparent");
-        exitMenuItem.setOnAction(event -> {
-            System.exit(0);
-        });
-        fileMenu.getItems().addAll(exitMenuItem);
-
-        menuBar.getMenus().addAll(fileMenu);
-        menuBar.getMenus().addAll(new BackgroundMenu("BackGround", main));
+        initMenu(main, menuBar);
 
 
         int componentSize = 2;
         int menuBarSize = 30;
         int selectSize = 50;
         int pagintionSize = menuBarSize + selectSize;
-
-
         select.setPrefHeight(selectSize);
         menuBar.setPrefHeight(menuBarSize);
         select.setOpacity(0.8);
         select.setAlignment(Pos.CENTER);
 
+        List<Option> options = initPane(main, select, componentSize, pagintionSize);
+
+
+        SearchPane searchPane =
+                (SearchPane) options.stream().filter(option -> option.pane() instanceof SearchPane).
+                        map(Option::pane).findFirst().orElse(null);
+        PagePane pagePane =
+                (PagePane) options.stream().filter(option -> option.pane() instanceof PagePane).
+                        map(Option::pane).findFirst().orElse(null);
+        DownloadPane downloadPane =
+                (DownloadPane) options.stream().filter(option -> option.pane() instanceof DownloadPane).
+                        map(Option::pane).findFirst().orElse(null);
+
+
+        // 绑定.实现动态变化
+        //  BindUtils.bind(select.prefHeightProperty(), main.heightProperty().multiply(2 / 15.0));
+
+        Scene scene = new Scene(main, 600, 480);
+
+
+        // 加载Search 面板的插件
+        initSearchPagenPlugin(searchPane, downloadPane, scene);
+
+        // 加载Page 面板的插件
+        initPagePagePlugin(pagePane, downloadPane, scene);
+
+
+        onCloseListener(primaryStage);
+
+        main.getChildren().addAll(menuBar, select, searchPane);
+        primaryStage.getIcons().add(new Image(Main.class.getClassLoader().getResource("icon/icon.jpg").toString()));
+
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        // 要放在最后面
+        searchPane.getController().getSearchText().requestFocus();
+    }
+
+    private void initPagePagePlugin(PagePane pagePane, DownloadPane downloadPane, Scene scene) {
+        List<PagePluginHolder> pagePluginHolders = PluginUtils.getPagePlugins()
+                .stream().map(PagePlugin::get).collect(Collectors.toList());
+        if (!pagePluginHolders.isEmpty()) {
+            pagePane.getController().getPageText().setOnAction(new PageAction(pagePane.getController().getComboBox(),
+                    pagePane.getController().getPageText(), pagePluginHolders
+                    , pagePane, downloadPane));
+            // 触发Action事件的
+            scene.addMnemonic(new Mnemonic(pagePane.getController().getPageText(),
+                    new KeyCodeCombination(KeyCode.ENTER)));
+
+            pagePane.getController().getPageButton().setOnAction(new PageAction(pagePane.getController().getComboBox(),
+                    pagePane.getController().getPageText(), pagePluginHolders
+                    , pagePane, downloadPane));
+        }
+    }
+
+    private void initSearchPagenPlugin(SearchPane searchPane, DownloadPane downloadPane, Scene scene) {
+        //插件
+        List<SearchPluginHolder> searchPluginHolders = PluginUtils.getSearchPlugins()
+                .stream().map(SearchPlugin::get).collect(Collectors.toList());
+
+        if (!searchPluginHolders.isEmpty()) {
+            searchPane.getController().getSearchText().setOnAction(new SearchAction(searchPane.getController().getComboBox(),
+                    searchPane.getController().getSearchText(), searchPluginHolders
+                    , searchPane, downloadPane));
+            // 触发Action事件的
+            scene.addMnemonic(new Mnemonic(searchPane.getController().getSearchText(),
+                    new KeyCodeCombination(KeyCode.ENTER)));
+            // 以上出发Action 事件
+
+            searchPane.getController().getSearchButton().setOnAction(new SearchAction(searchPane.getController().getComboBox(),
+                    searchPane.getController().getSearchText(), searchPluginHolders
+                    , searchPane, downloadPane));
+        }
+    }
+
+    private List<Option> initPane(VBox main, HBox select, int componentSize, int pagintionSize) {
         List<Option> options = this.loader.loader();
 
         options.stream().forEach(option -> {
@@ -115,73 +175,25 @@ public class Main extends Application {
 
             select.getChildren().add(button);
         });
+        return options;
+    }
 
+    private void initMenu(VBox main, MenuBar menuBar) {
+        menuBar.setStyle("-fx-background-color: transparent");
+        Menu fileMenu = new Menu("_File");
 
-        SearchPane searchPane =
-                (SearchPane) options.stream().filter(option -> option.pane() instanceof SearchPane).
-                        map(Option::pane).findFirst().orElse(null);
-        PagePane pagePane =
-                (PagePane) options.stream().filter(option -> option.pane() instanceof PagePane).
-                        map(Option::pane).findFirst().orElse(null);
-        DownloadPane downloadPane =
-                (DownloadPane) options.stream().filter(option -> option.pane() instanceof DownloadPane).
-                        map(Option::pane).findFirst().orElse(null);
+        fileMenu.setStyle("-fx-background-color: transparent");
 
+        MenuItem exitMenuItem = new MenuItem("Exit");
 
-        // 绑定.实现动态变化
-        //  BindUtils.bind(select.prefHeightProperty(), main.heightProperty().multiply(2 / 15.0));
+        exitMenuItem.setStyle("-fx-background-color:transparent");
+        exitMenuItem.setOnAction(event -> {
+            System.exit(0);
+        });
+        fileMenu.getItems().addAll(exitMenuItem);
 
-
-
-
-        Scene scene = new Scene(main, 600, 480);
-
-
-        //插件
-        List<SearchPluginHolder> searchPluginHolders = PluginUtils.getSearchPlugins()
-                .stream().map(SearchPlugin::get).collect(Collectors.toList());
-
-        List<PagePluginHolder> pagePluginHolders = PluginUtils.getPagePlugins()
-                .stream().map(PagePlugin::get).collect(Collectors.toList());
-
-
-        if (!searchPluginHolders.isEmpty()) {
-            searchPane.getController().getSearchText().setOnAction(new SearchAction(searchPane.getController().getComboBox(),
-                    searchPane.getController().getSearchText(), searchPluginHolders
-                    , searchPane, downloadPane));
-            // 触发Action事件的
-            scene.addMnemonic(new Mnemonic(searchPane.getController().getSearchText(),
-                    new KeyCodeCombination(KeyCode.ENTER)));
-
-            searchPane.getController().getSearchButton().setOnAction(new SearchAction(searchPane.getController().getComboBox(),
-                    searchPane.getController().getSearchText(), searchPluginHolders
-                    , searchPane, downloadPane));
-        }
-
-        if (!pagePluginHolders.isEmpty()) {
-            pagePane.getController().getPageText().setOnAction(new PageAction(pagePane.getController().getComboBox(),
-                    pagePane.getController().getPageText(), pagePluginHolders
-                    , pagePane, downloadPane));
-            // 触发Action事件的
-            scene.addMnemonic(new Mnemonic(pagePane.getController().getPageText(),
-                    new KeyCodeCombination(KeyCode.ENTER)));
-
-            pagePane.getController().getPageButton().setOnAction(new PageAction(pagePane.getController().getComboBox(),
-                    pagePane.getController().getPageText(), pagePluginHolders
-                    , pagePane, downloadPane));
-        }
-
-
-        onCloseListener(primaryStage);
-
-        main.getChildren().addAll(menuBar, select, searchPane);
-        primaryStage.getIcons().add(new Image(Main.class.getClassLoader().getResource("icon/icon.jpg").toString()));
-
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
-        // 要放在最后面
-        searchPane.getController().getSearchText().requestFocus();
+        menuBar.getMenus().addAll(fileMenu);
+        menuBar.getMenus().addAll(new BackgroundMenu("BackGround", main));
     }
 
     private void onCloseListener(Stage primaryStage) {

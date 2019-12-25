@@ -5,4 +5,19 @@ function decrypt20180904() {
     var decryptedStr = decrypt.toString(CryptoJS.enc.Utf8);
     return decryptedStr.toString();
 }
+String.prototype.ltrim = function (charlist) {
+    charlist = charlist || ' \t\n\r\x0B';
+    return this.replace(new RegExp('^[' + charlist + ']+', 'g'), '');
+};
+
+function getChapterImage(arr,page) {
+    var filename = arr[page - 1];
+    var host = "https://www.manhuadui.com";
+    if (filename === undefined) return host + '/images/default/common.png';
+    if (filename.match(/^https?:\/\/(images.dmzj.com|imgsmall.dmzj.com)/i)) return 'https://mhimg.eshanyao.com/showImage.php?url='+encodeURI(filename);
+    if (filename.match(/^[a-z]\//i)) return 'https://mhimg.eshanyao.com/showImage.php?url='+encodeURI("https://images.dmzj.com/"+filename);
+    if (filename.match(/^(http:|https:|ftp:|^)\/\//i)) return filename;
+    filename =chapterPath.trim('/') + '/' + filename.ltrim('/');
+    return host + '/' + filename.ltrim('/');
+}
 

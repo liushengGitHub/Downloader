@@ -39,12 +39,13 @@ public class MergeAudioAndVideoFile implements Runnable {
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
-            try {
+            // 在 Download 后删除
+            /*try {
                 Files.delete(flvPath);
                 Files.delete(mp3Path);
             } catch (IOException e) {
                 logger.debug("删除文件失败");
-            }
+            }*/
         }
     }
 }

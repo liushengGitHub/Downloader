@@ -37,7 +37,8 @@ public class MergeFile implements Runnable {
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
-            try {
+            // 在 Downloade 后删除
+            /*try {
                 list.forEach(f -> {
                     try {
                         Files.delete(Paths.get(f));
@@ -48,7 +49,7 @@ public class MergeFile implements Runnable {
                 Files.delete(Paths.get(dir, name + ".txt"));
             } catch (IOException e) {
                 logger.debug("删除失败");
-            }
+            }*/
         }
 
     }

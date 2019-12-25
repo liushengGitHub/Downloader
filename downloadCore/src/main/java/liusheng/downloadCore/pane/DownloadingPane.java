@@ -1,8 +1,11 @@
 package liusheng.downloadCore.pane;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
+import liusheng.downloadCore.entity.DownloadItemPaneEntity;
+import liusheng.downloadCore.executor.FailListExecutorService;
 import liusheng.downloadCore.util.BindUtils;
 import liusheng.downloadInterface.DownloaderController;
 
@@ -28,15 +31,21 @@ public class DownloadingPane extends VBox {
         downloadingPaneContainer = new DownloadingPaneContainer(downloadPane);
         downloadingPaneController = new DownloadingPaneController();
 
+        ObservableList<DownloadItemPaneEntity> items = downloadingPaneContainer.getListView().getItems();
         downloadingPaneController.getAllCancel().setOnAction((e) -> {
-            downloadingPaneContainer.getListView().getItems().forEach(entity -> {
+            items.forEach(entity -> {
                 Node pane = entity.getAbstractVideoBean().getPane();
 
                 if (pane instanceof DownloadItemPane) {
                     DownloadItemPane itemPane = (DownloadItemPane) pane;
                     itemPane.getLocal().cancel();
+
                 }
             });
+            // 移除所有
+            items.removeAll();
+            // 清空任务队列
+            FailListExecutorService.getTaskQueue().clear();
         });
 
         JFXButton allPause = downloadingPaneController.getAllPause();
@@ -47,7 +56,7 @@ public class DownloadingPane extends VBox {
                 allPause.setText("全部暂停");
             }
             p = !p;
-            downloadingPaneContainer.getListView().getItems().forEach(entity -> {
+            items.forEach(entity -> {
                 Node pane = entity.getAbstractVideoBean().getPane();
 
                 if (pane instanceof DownloadItemPane) {

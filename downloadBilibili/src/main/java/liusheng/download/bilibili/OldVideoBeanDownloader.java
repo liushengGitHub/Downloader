@@ -141,8 +141,8 @@ public class OldVideoBeanDownloader implements Downloader<OldVideoBean> {
                             removeListItem(oldVideoBean);
                         });
 
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
+                    } catch (Throwable throwable) {
+                        throw new RuntimeException(throwable);
                     } finally {
                         // 删除所有临时文件
                         int[] fails = new int[1];
