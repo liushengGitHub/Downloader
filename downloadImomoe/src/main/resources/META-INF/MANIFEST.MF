@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Main-Class: 
+Class-Path: jsoup-1.12.1.jar gson-2.8.5.jar hutool-all-4.6.5.jar jfoenix
+ -8.0.8.jar log4j-1.2.17.jar
+

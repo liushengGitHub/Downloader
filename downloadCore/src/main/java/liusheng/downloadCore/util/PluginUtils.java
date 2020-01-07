@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -24,7 +25,11 @@ public class PluginUtils {
 
     static {
         try {
-            List<URLClassLoader> classLoaders = Files.list(Paths.get("plugins")).map(path -> {
+            Path plugins1 = Paths.get("plugins");
+            if (!Files.exists(plugins1)) {
+                Files.createDirectories(plugins1);
+            }
+            List<URLClassLoader> classLoaders = Files.list(plugins1).map(path -> {
                 try {
                     return URLClassLoader.newInstance(new URL[]{path.toUri().toURL()});
                 } catch (MalformedURLException e) {

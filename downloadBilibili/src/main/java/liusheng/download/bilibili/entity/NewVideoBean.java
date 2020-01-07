@@ -1,11 +1,10 @@
 package liusheng.download.bilibili.entity;
 
-import liusheng.download.bilibili.entity.DashBean;
-import liusheng.downloadCore.entity.AbstractVideoBean;
+import liusheng.downloadCore.entity.AbstractDataBean;
 
 import java.util.List;
 
-public class NewVideoBean  extends AbstractVideoBean {
+public class NewVideoBean  extends AbstractDataBean {
 
     /**
      * code : 0

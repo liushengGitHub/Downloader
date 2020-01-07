@@ -3,11 +3,11 @@ package liusheng.downloadCore.entity;
 import liusheng.downloadCore.pane.DownloadItemPane;
 
 public class DownloadItemPaneEntity {
-    private AbstractVideoBean abstractVideoBean;
+    private AbstractDataBean abstractDataBean;
     private int quality;
 
-    public AbstractVideoBean getAbstractVideoBean() {
-        return abstractVideoBean;
+    public AbstractDataBean getAbstractDataBean() {
+        return abstractDataBean;
     }
 
     public int getQuality() {
@@ -19,8 +19,8 @@ public class DownloadItemPaneEntity {
         return downloadItemPane;
     }
 
-    public void setAbstractVideoBean(AbstractVideoBean abstractVideoBean) {
-        this.abstractVideoBean = abstractVideoBean;
+    public void setAbstractDataBean(AbstractDataBean abstractDataBean) {
+        this.abstractDataBean = abstractDataBean;
     }
 
     public DownloadItemPaneEntity(int quality, DownloadItemPane downloadItemPane) {

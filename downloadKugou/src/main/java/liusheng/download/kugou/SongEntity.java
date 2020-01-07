@@ -1,10 +1,10 @@
 package liusheng.download.kugou;
 
-import liusheng.downloadCore.entity.AbstractVideoBean;
+import liusheng.downloadCore.entity.AbstractDataBean;
 
 import java.util.List;
 
-public class SongEntity  extends AbstractVideoBean {
+public class SongEntity  extends AbstractDataBean {
     /**
      * status : 1
      * err_code : 0

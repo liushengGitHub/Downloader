@@ -1,10 +1,10 @@
 package liusheng.download.bilibili.entity;
 
-import liusheng.downloadCore.entity.AbstractVideoBean;
+import liusheng.downloadCore.entity.AbstractDataBean;
 import liusheng.downloadCore.entity.DownloadItemPaneEntity;
 
 public class AbstractVideoBeanHolder {
-    private AbstractVideoBean abstractVideoBean;
+    private AbstractDataBean abstractDataBean;
     // 文件名字 ，不包含后缀
     private String name;
     private String refererUrl;
@@ -14,15 +14,15 @@ public class AbstractVideoBeanHolder {
         return downloadItemPaneEntity;
     }
 
-    public AbstractVideoBeanHolder(AbstractVideoBean abstractVideoBean, String name, String refererUrl, DownloadItemPaneEntity downloadItemPaneEntity) {
-        this.abstractVideoBean = abstractVideoBean;
+    public AbstractVideoBeanHolder(AbstractDataBean abstractDataBean, String name, String refererUrl, DownloadItemPaneEntity downloadItemPaneEntity) {
+        this.abstractDataBean = abstractDataBean;
         this.name = name;
         this.refererUrl = refererUrl;
         this.downloadItemPaneEntity = downloadItemPaneEntity;
     }
 
-    public AbstractVideoBean getAbstractVideoBean() {
-        return abstractVideoBean;
+    public AbstractDataBean getAbstractDataBean() {
+        return abstractDataBean;
     }
 
     public String getName() {

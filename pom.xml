@@ -17,6 +17,9 @@
         <module>manhuadui</module>
         <module>DownloadManhuadui</module>
         <module>downloadKugou</module>
+        <module>downloadImomoe</module>
+        <module>downloadEcho</module>
+        <module>BiliiliSpace</module>
     </modules>
 
 

@@ -1,24 +1,20 @@
 package liusheng.download.bilibili;
 
-import com.jfoenix.controls.JFXListView;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Label;
 import liusheng.download.bilibili.entity.AllPageBean;
 import liusheng.download.bilibili.entity.PagesBean;
 import liusheng.download.bilibili.parser.PageInfoParser;
 import liusheng.downloadCore.pane.DownloadListDialog;
-import liusheng.downloadCore.executor.FailListExecutorService;
+import liusheng.downloadCore.executor.ListExecutorService;
 import liusheng.downloadCore.executor.FailTask;
 import liusheng.downloadCore.pane.DownloadingPaneContainer;
-import liusheng.downloadCore.util.StringUtils;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.concurrent.Semaphore;
 
 
@@ -26,8 +22,6 @@ public class BilibiliDownloadAction implements EventHandler<ActionEvent> {
     private final PageInfoParser pageInfoParser = new PageInfoParser();
     private String url;
     private DownloadingPaneContainer downloadingPaneContainer;
-    public static Semaphore semaphore = new Semaphore(2);
-
     public BilibiliDownloadAction(String url, DownloadingPaneContainer downloadingPaneContainer) {
         this.url = url;
         this.downloadingPaneContainer = downloadingPaneContainer;
@@ -35,7 +29,7 @@ public class BilibiliDownloadAction implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-        FailListExecutorService.commonExecutorService()
+        ListExecutorService.commonExecutorService()
                 .execute(new FailTask(() -> {
 
                     try {
@@ -59,7 +53,7 @@ public class BilibiliDownloadAction implements EventHandler<ActionEvent> {
 
                         Platform.runLater(() -> {
                             DownloadListDialog listDialog = new DownloadListDialog(downloadingPaneContainer,
-                                    new BilibiliDownloadProcessor(pageBeanList, pages, semaphore, new BilibiliPageDownload(downloadingPaneContainer, semaphore, pages)));
+                                    new BilibiliDownloadProcessor(pageBeanList, pages, new BilibiliPageDownload(downloadingPaneContainer, pages)));
 
                             listDialog.showAndWait();
                         });

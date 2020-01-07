@@ -3,8 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/downloadKugou_jar</output-path>
     <root id="archive" name="downloadKugou.jar">
       <element id="module-output" name="downloadKugou" />
-      <element id="module-output" name="downloadCore" />
-      <element id="module-output" name="downloadInterface" />
     </root>
   </artifact>
 </component>

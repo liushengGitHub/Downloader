@@ -1,16 +1,13 @@
 package liusheng.download.bilibili.parser;
 
-import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.scene.layout.Pane;
 import liusheng.download.bilibili.BilibiliDownloadAction;
 import liusheng.download.bilibili.BilibiliDownloadProcessor;
 import liusheng.download.bilibili.BilibiliPageDownload;
 import liusheng.download.bilibili.entity.AllPageBean;
 import liusheng.download.bilibili.entity.PagesBean;
-import liusheng.downloadCore.executor.FailListExecutorService;
+import liusheng.downloadCore.executor.ListExecutorService;
 import liusheng.downloadCore.executor.FailTask;
-import liusheng.downloadCore.pane.DownloadListDialogItemPane;
 import liusheng.downloadCore.pane.DownloadSelectPane;
 import liusheng.downloadCore.pane.DownloadingPane;
 import liusheng.downloadCore.search.SearchParam;
@@ -21,8 +18,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Semaphore;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class BilibiliVideoSubPageParser implements Parser<Object, Pane> {
     private final PageInfoParser pageInfoParser = new PageInfoParser();
@@ -30,9 +25,8 @@ public class BilibiliVideoSubPageParser implements Parser<Object, Pane> {
     @Override
     public Pane parse(Object param) throws IOException {
         DownloadSelectPane downloadSelectPane = new DownloadSelectPane();
-        FailListExecutorService.commonExecutorService().execute(new FailTask(() -> {
+        ListExecutorService.commonExecutorService().execute(new FailTask(() -> {
             try {
-                Semaphore semaphore = BilibiliDownloadAction.semaphore;
                 /**
                  *
                  * 单页所有p 的信息
@@ -53,8 +47,8 @@ public class BilibiliVideoSubPageParser implements Parser<Object, Pane> {
                 // 为null 说明没有这个视频
                 if (pageBeanList.isEmpty()) return;
 
-                BilibiliDownloadProcessor downloadProcessor = new BilibiliDownloadProcessor(pageBeanList, pages, semaphore,
-                        new BilibiliPageDownload(downloadingPane.getDownloadingPaneContainer(), semaphore, pages));
+                BilibiliDownloadProcessor downloadProcessor = new BilibiliDownloadProcessor(pageBeanList, pages,
+                        new BilibiliPageDownload(downloadingPane.getDownloadingPaneContainer(), pages));
                 downloadProcessor.before(downloadSelectPane.getListView());
 
                 downloadSelectPane.getDownloadButton().setOnAction(e -> {

@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact name="downloadEcho:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/downloadEcho_jar</output-path>
+    <root id="root">
+      <element id="archive" name="downloadEcho.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/downloadEcho/src/main/java/resource/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="downloadEcho" />
+      </element>
+    </root>
+  </artifact>
+</component>

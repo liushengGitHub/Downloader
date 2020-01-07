@@ -8,10 +8,11 @@ public class ProcessBuilderUtils {
     static Logger logger = Logger.getLogger(ProcessBuilderUtils.class);
     public static void executeAndDiscardOuput(String ... commands) throws Exception {
         ProcessBuilder builder = new ProcessBuilder(commands);
+        Process process = builder
+                .redirectErrorStream(true)
+                .start();
         try {
-            Process process = builder
-                    .redirectErrorStream(true)
-                    .start();
+
 
             Scanner scanner = new Scanner(process.getInputStream());
 
@@ -19,9 +20,11 @@ public class ProcessBuilderUtils {
                 logger.debug(scanner.nextLine());
             }
             process.waitFor();
-            process.destroy();
+
         }catch (Exception e) {
             throw  e;
+        }finally {
+            process.destroy();
         }
     }
 }

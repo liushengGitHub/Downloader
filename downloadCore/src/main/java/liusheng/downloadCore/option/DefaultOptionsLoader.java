@@ -15,9 +15,16 @@ import java.util.stream.Collectors;
 public class DefaultOptionsLoader implements OptionsLoader {
     @Override
     public List<Option> loader() {
-        Path path = Paths.get("config/options");
+        Path config = Paths.get("config");
 
+        Path path = config.resolve("options");
         try {
+            if (!Files.exists(config)) {
+                Files.createDirectories(config);
+            }
+            if (!Files.exists(path)){
+                return  Collections.emptyList();
+            }
             ClassLoader classLoader = ClassLoaderUtil.getClassLoader();
             List<Option> options = Files.lines(path).map(str -> {
                 try {

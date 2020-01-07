@@ -31,4 +31,18 @@ public class StringUtils {
         String temp = url.substring(start + 1);
         return temp;
     }
+
+    public static String urlProcess(String url) {
+        if (url.startsWith("http")){
+            return  url;
+        }
+        if (url.startsWith("//")) {
+            url = "http:" + url;
+            return  url ;
+        }
+        if (!url.startsWith("/")) {
+            return  null;
+        }
+        return url;
+    }
 }

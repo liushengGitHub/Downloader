@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="downloadStart:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/downloadStart_jar</output-path>
+    <root id="archive" name="downloadStart.jar">
+      <element id="module-output" name="downloadStart" />
+      <element id="module-output" name="downloadCore" />
+      <element id="module-output" name="downloadInterface" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.12.1/jsoup-1.12.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/log4j/log4j/1.2.17/log4j-1.2.17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/jfoenix/jfoenix/8.0.8/jfoenix-8.0.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/cn/hutool/hutool-all/4.6.5/hutool-all-4.6.5.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

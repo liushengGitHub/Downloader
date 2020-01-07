@@ -15,14 +15,14 @@ import java.util.concurrent.ConcurrentHashMap;
 public class PaginationVBox extends VBox {
     private final Pagination pagination = new Pagination(10);
     private final SearchItemController searchItemController;
-    private final Map<Integer, JFXListView<SearchItemPane>> listViewMap = new HashMap<>();
+    private final Map<Integer, JFXListView<AbstractSearchItemPane>> listViewMap = new HashMap<>();
     private final Map<String, Image> imageMap = new ConcurrentHashMap<>();
 
     public Map<String, Image> getImageMap() {
         return imageMap;
     }
 
-    public Map<Integer, JFXListView<SearchItemPane>> getListViewMap() {
+    public Map<Integer, JFXListView<AbstractSearchItemPane>> getListViewMap() {
         return listViewMap;
     }
 

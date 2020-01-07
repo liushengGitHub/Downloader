@@ -25,6 +25,7 @@ public class RetryDownloader implements Downloader<DownloadEntity> {
     private AtomicLong size;
     private AtomicLong allSize;
     private long start;
+    private long length = -1;
 
     public long getStart() {
         return start;
@@ -48,6 +49,8 @@ public class RetryDownloader implements Downloader<DownloadEntity> {
         return allSize;
     }
 
+    private boolean first = true;
+
     public RetryDownloader(DownloaderController itemPaneLocal, AtomicLong size, AtomicLong allSize, AtomicInteger parts) {
 
         this.itemPaneLocal = itemPaneLocal;
@@ -59,7 +62,6 @@ public class RetryDownloader implements Downloader<DownloadEntity> {
     @Override
     public Error download(DownloadEntity downloadEntity) throws IOException {
         int retry = downloadEntity.getRetry();
-        List<String> urls = downloadEntity.getbUrls();
         String url = downloadEntity.getUrl();
         Path filePath = downloadEntity.getFilePath();
         String refererUrl = downloadEntity.getRefererUrl();
@@ -90,21 +92,35 @@ public class RetryDownloader implements Downloader<DownloadEntity> {
 
         connection.setRequestMethod("GET");
         connection.addRequestProperty("Referer", url);
-
         logger.debug(videoUrl + "  Download Started ");
+        if (!first) {
+            connection.addRequestProperty("Range", "bytes=" + start + "-" + (length - 1));
+        }
+
         long len = connection.getContentLengthLong();
         parts.getAndIncrement();
-        allSize.getAndAdd(len);
+
+        // 第一次进入,才增加长度,否正不增加
 
         if (len <= 0) throw new IllegalStateException();
         InputStream inputStream = connection.getInputStream();
         long sum = start;
+
+        if (!first &&len == this.length) {
+            inputStream.skip(sum);
+        }
+        if (first) {
+            allSize.getAndAdd(len);
+            first = false;
+            this.length = len;
+            logger.info(url + "=" + len);
+        }
         try (OutputStream outputStream = Files.newOutputStream(path)) {
 
             byte[] bytes = new byte[10240];
-            while (sum < len) {
+            while (sum < this.length) {
                 int state = itemPaneLocal.getState();
-                if (DownloaderController.CANCEL == state) {
+                if (DownloaderController.CANCEL == state || Thread.currentThread().isInterrupted() || state == DownloaderController.EXCEPTION) {
                     // 取消的删除 关闭流
                     outputStream.close();
                     break;
@@ -133,10 +149,13 @@ public class RetryDownloader implements Downloader<DownloadEntity> {
 
                     connection.setRequestMethod("GET");
                     connection.addRequestProperty("Referer", url);
-                    connection.addRequestProperty("Range", "bytes=" + sum + "-" + (len - 1));
+                    connection.addRequestProperty("Range", "bytes=" + sum + "-" + (this.length - 1));
 
                     inputStream = connection.getInputStream();
 
+                    if (connection.getContentLengthLong() == this.length) {
+                        inputStream.skip(sum);
+                    }
                     continue;
                 }
 

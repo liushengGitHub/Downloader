@@ -1,13 +1,12 @@
 package liusheng.downloadCore.pane;
 
-import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXListView;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import liusheng.downloadCore.entity.AbstractVideoBean;
+import liusheng.downloadCore.entity.AbstractDataBean;
 import liusheng.downloadCore.entity.DownloadItemPaneEntity;
 import liusheng.downloadCore.player.DefaultMediaPlayerViewVBox;
 import liusheng.downloadCore.util.BindUtils;
@@ -73,13 +72,13 @@ public class DownloadedPaneContainer extends VBox {
                     if (!empty && item != null) {
                        /* int index = getIndex();
                         Node pane = ((AbstractVideoBean) indeies.get(index)).getPane();*/
-                        AbstractVideoBean abstractVideoBean = item.getAbstractVideoBean();
-                        Label label = new Label(abstractVideoBean.getRefererUrl());
+                        AbstractDataBean abstractDataBean = item.getAbstractDataBean();
+                        Label label = new Label(abstractDataBean.getRefererUrl());
 
                         label.setOnMouseClicked(e->{
                             try {
-                                DefaultMediaPlayerViewVBox defaultMediaPlayerViewVBox = new DefaultMediaPlayerViewVBox(Paths.get(abstractVideoBean.getDirFile().toString(),
-                                        abstractVideoBean.getName() + ".mp4"
+                                DefaultMediaPlayerViewVBox defaultMediaPlayerViewVBox = new DefaultMediaPlayerViewVBox(Paths.get(abstractDataBean.getDirFile().toString(),
+                                        abstractDataBean.getName() + ".mp4"
                                 ).toUri().toURL().toString());
 
                                 Stage stage = new Stage();

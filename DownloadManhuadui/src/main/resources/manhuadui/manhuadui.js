@@ -5,6 +5,11 @@ function decrypt20180904() {
     var decryptedStr = decrypt.toString(CryptoJS.enc.Utf8);
     return decryptedStr.toString();
 }
+String.prototype.trim = function (charlist) {
+    charlist = charlist || ' \t\n\r\x0B';
+    return this.replace(new RegExp('(^[' + charlist + ']+)|([' + charlist + ']+$)', 'g'), '');
+};
+
 String.prototype.ltrim = function (charlist) {
     charlist = charlist || ' \t\n\r\x0B';
     return this.replace(new RegExp('^[' + charlist + ']+', 'g'), '');

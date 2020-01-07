@@ -2,15 +2,15 @@ package liusheng.download.manhuadui.bean;
 
 
 
+import liusheng.downloadCore.entity.AbstractDataBean;
 import liusheng.downloadCore.util.StringUtils;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Image {
+public class Image extends AbstractDataBean {
     private final static AtomicInteger size = new AtomicInteger(1);
     private String url;
 
-    private String fileName;
 
     public Image() {
 
@@ -23,13 +23,6 @@ public class Image {
                 '}';
     }
 
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
 
     public String getUrl() {
         return url;
@@ -42,7 +35,11 @@ public class Image {
     public Image(String url) {
         this.url = url;
         String s = StringUtils.urlToFileName(url);
-        s = (s.lastIndexOf(".") != -1) ? s : s + ".png";
-        this.fileName = size.getAndIncrement() + "_" + s;
+        setName( (s.lastIndexOf(".") != -1) ? s : s + ".png");
+    }
+
+    @Override
+    public int getParts() {
+        return 1;
     }
 }

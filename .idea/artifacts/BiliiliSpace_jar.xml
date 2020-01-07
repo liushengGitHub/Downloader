@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact name="BiliiliSpace:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/BiliiliSpace_jar</output-path>
+    <root id="root">
+      <element id="archive" name="BiliiliSpace.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/BiliiliSpace/src/main/java/resources/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="BiliiliSpace" />
+        <element id="module-output" name="downloadBilibili" />
+      </element>
+    </root>
+  </artifact>
+</component>

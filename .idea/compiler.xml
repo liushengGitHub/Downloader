@@ -9,9 +9,10 @@
         <module name="downloadInterface" />
         <module name="downloadBilibili" />
         <module name="DownloadManhuadui" />
+        <module name="downloadCore" />
         <module name="downloadKugou" />
         <module name="downloadStart" />
-        <module name="downloadCore" />
+        <module name="BiliiliSpace" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

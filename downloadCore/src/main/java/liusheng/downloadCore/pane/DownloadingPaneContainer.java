@@ -4,8 +4,8 @@ import com.jfoenix.controls.JFXListView;
 import javafx.application.Platform;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.VBox;
-import liusheng.downloadCore.executor.FailListExecutorService;
-import liusheng.downloadCore.entity.AbstractVideoBean;
+import liusheng.downloadCore.executor.ListExecutorService;
+import liusheng.downloadCore.entity.AbstractDataBean;
 import liusheng.downloadCore.entity.DownloadItemPaneEntity;
 import liusheng.downloadCore.util.BindUtils;
 
@@ -34,8 +34,15 @@ public class DownloadingPaneContainer extends VBox {
 
     private final Semaphore semaphore = new Semaphore(2);
 
+    private static  DownloadingPaneContainer me;
+
+    public static DownloadingPaneContainer getMe() {
+        return me;
+    }
+
     public DownloadingPaneContainer(DownloadPane downloadPane) {
         super();
+        me = this;
         this.downloadPane = downloadPane;
 
        /* FailListExecutorService.commonExecutorService().execute(()->{
@@ -58,7 +65,7 @@ public class DownloadingPaneContainer extends VBox {
             }
         });
         */
-        FailListExecutorService.commonExecutorService().execute(new Runnable() {
+        ListExecutorService.commonExecutorService().execute(new Runnable() {
             @Override
             public void run() {
                 while (true) {
@@ -69,13 +76,13 @@ public class DownloadingPaneContainer extends VBox {
                     }
                     Platform.runLater(() -> {
                         listView.getItems().forEach(itemPaneEntity -> {
-                            AbstractVideoBean abstractVideoBean = itemPaneEntity.getAbstractVideoBean();
-                            if (Objects.nonNull(abstractVideoBean)) {
-                                long total = abstractVideoBean.getAllSize().get();
-                                long part = abstractVideoBean.getSize().get();
+                            AbstractDataBean abstractDataBean = itemPaneEntity.getAbstractDataBean();
+                            if (Objects.nonNull(abstractDataBean)) {
+                                long total = abstractDataBean.getAllSize().get();
+                                long part = abstractDataBean.getSize().get();
 
                                 if (total == 0) return;
-                                DownloadItemPane pane = (DownloadItemPane) abstractVideoBean.getPane();
+                                DownloadItemPane pane = (DownloadItemPane) abstractDataBean.getPane();
 
                                 double value = part * 1.0 / total;
                                 pane.getDownloadProgressBar().setProgress(value);

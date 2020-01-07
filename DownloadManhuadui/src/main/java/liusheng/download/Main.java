@@ -1,7 +1,6 @@
 package liusheng.download;
 
-import liusheng.download.manhuadui.donwload.CartoonDonwloader;
-import liusheng.download.manhuadui.donwload.ChapterDownloader;
+import liusheng.download.manhuadui.donwload.CartoonDownloader;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -38,7 +37,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        CartoonDonwloader donwloader = new CartoonDonwloader("");
+        CartoonDownloader donwloader = new CartoonDownloader("");
 
         donwloader.download("https://www.manhuadui.com/manhua/guanyuqiannvyoudidihenkeaidenajianshi/");
     }

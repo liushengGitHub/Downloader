@@ -10,7 +10,7 @@ import liusheng.download.bilibili.entity.NewVideoBean;
 import liusheng.download.bilibili.transefer.MergeAudioAndVideoFile;
 import liusheng.downloadCore.entity.DownloadEntity;
 import liusheng.downloadCore.Downloader;
-import liusheng.downloadCore.executor.FailListExecutorService;
+import liusheng.downloadCore.executor.ListExecutorService;
 import liusheng.downloadCore.RetryDownloader;
 import liusheng.downloadCore.entity.DownloadItemPaneEntity;
 import liusheng.downloadCore.pane.DownloadItemPane;
@@ -35,6 +35,7 @@ import liusheng.downloadCore.Error;
 public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
     private final Logger logger = Logger.getLogger(NewVideoBeanDownloader.class);
     private final Semaphore semaphore;
+    private boolean merge = true; ;
 
     public NewVideoBeanDownloader(Semaphore semaphore) {
         this.semaphore = semaphore;
@@ -59,8 +60,10 @@ public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
                     if (!(pane instanceof DownloadItemPane)) throw new IllegalArgumentException();
 
                     DownloadItemPane itemPane = (DownloadItemPane) pane;
+
                     // 获取下载控制器
                     DownloaderController itemPaneLocal = itemPane.getLocal();
+                    Label stateLabel = itemPane.getStateLabel();
                     try {
                         List<DashBean.AudioBean> audioBeanList = dashBean.getAudio();
 
@@ -100,43 +103,26 @@ public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
                         mp3Path = dirPath.resolve(fileName + ".mp3.temp");
                         // 下载视频文件
                         Path flvPathTemp = flvPath;
-                        Platform.runLater(() -> {
-                            itemPane.getPathLabel().setText(dirPath.resolve(fileName + ".flv").toString());
-                        });
+
 
                         AtomicLong size = newVideoBean.getSize();
                         AtomicLong allSize = newVideoBean.getAllSize();
                         AtomicInteger parts = newVideoBean.getPartSize();
-                        StateCountDownLatch state = new StateCountDownLatch(1);
+                        StateCountDownLatch state = new StateCountDownLatch(2);
 
                         // 设置开始执行
-                        itemPaneLocal.setState(DownloaderController.EXECUTE);
-
-                        FailListExecutorService.commonExecutorServicehelp().execute(() -> {
-                            try {
-                                RetryDownloader retryDownloader = new RetryDownloader(itemPaneLocal, size, allSize, parts);
-                                DownloadEntity downloadEntity = new DownloadEntity(refererUrl, vbUrl, vbUrls, flvPathTemp, dirPath, 3);
-                                Error error = retryDownloader.download(downloadEntity);
-                                // 失败
-                                if (Objects.nonNull(error.getE())) {
-                                    throw new RuntimeException(error.getE());
-                                }
-                            } catch (Throwable e) {
-                                state.error = true;
-                                throw new RuntimeException(e);
-                            } finally {
-                                state.countDown();
-                            }
+                        ListExecutorService.commonExecutorServicehelp().execute(() -> {
+                            downloadMethods(itemPaneLocal, refererUrl, vbUrls, vbUrl, dirPath, flvPathTemp, size, allSize, parts, state);
                         });
                         // 下载音频文件
+                        Path finalMp3Path = mp3Path;
                         String aBUrl = audioBeanList.get(0).getBaseUrl();
                         List<String> aBUrls = audioBeanList.get(0).getBackupUrl();
-                        RetryDownloader retryDownloader = new RetryDownloader(itemPaneLocal, size, allSize, parts);
-                        DownloadEntity downloadEntity = new DownloadEntity(refererUrl, aBUrl, aBUrls, mp3Path, dirPath, 3);
-                        Error error = retryDownloader.download(downloadEntity);
-                        // 音频文件 下载失败
-                        if (Objects.nonNull(error.getE())) {
-                            throw new RuntimeException(error.getE());
+
+                        try {
+                            downloadMethods(itemPaneLocal, refererUrl, aBUrls, aBUrl, dirPath, finalMp3Path, size, allSize, parts, state);
+                        }catch (Throwable throwable) {
+                            logger.info(aBUrl,throwable);
                         }
                         // 等待 异步线程的完成
                         state.await();
@@ -152,12 +138,8 @@ public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
                         // 其中一个下载失败,则两个重新下载,因这种处理方式简单
                         // 限流
                         // 到达这里说明下载完成,提示一下
-                        Label stateLabel = itemPane.getStateLabel();
+
                         if (state.error) {
-                            itemPaneLocal.setState(DownloaderController.EXCEPTION);
-                            Platform.runLater(() -> {
-                                stateLabel.setText("下载失败.. 点击重试");
-                            });
                             throw new RuntimeException();
                         } else {
                             itemPaneLocal.setState(DownloaderController.FINISHED);
@@ -169,33 +151,41 @@ public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
                         });
 
                         try {
+                            logger.info("flvPath : " + Files.size(flvPath) + " == mp3Path :" + Files.size(mp3Path));
                             semaphore.acquire();
                             new MergeAudioAndVideoFile(flvPath, mp3Path, fileName).run();
-                        } catch (Exception e) {
-                            Platform.runLater(() -> {
-                                stateLabel.setText("合并失败..点击重试");
-                            });
-
+                        } catch (Throwable e) {
+                            merge = false;
+                            logger.info("合并失败",e);
                         } finally {
                             // 必须放到finally 里面
                             semaphore.release();
                         }
 
-                        Platform.runLater(() -> {
-                            stateLabel.setText("合成完毕...");
-                            removeListItem(newVideoBean);
-                        });
-
+                        if (merge) {
+                            Platform.runLater(() -> {
+                                stateLabel.setText("合成完毕...");
+                                removeListItem(newVideoBean);
+                            });
+                        }else {
+                            Platform.runLater(() -> {
+                                stateLabel.setText("合并失败");
+                            });
+                        }
 
                     } catch (Throwable throwable) {
+                        Platform.runLater(() -> {
+                            stateLabel.setText("下载失败");
+                        });
+                        itemPaneLocal.setState(DownloaderController.EXCEPTION);
                         throw new RuntimeException(throwable);
                     } finally {
                         // 取消音频的下载,并删除 ,如果下载完成或者下载失败则无效
                         // 失败则删除文件 和抛出异常
                         try {
-                            if (Objects.nonNull(flvPath) && Files.exists(flvPath))
+                            if (merge && Objects.nonNull(flvPath) && Files.exists(flvPath))
                                 Files.delete(flvPath);
-                            if (Objects.nonNull(mp3Path) && Files.exists(mp3Path))
+                            if (merge && Objects.nonNull(mp3Path) && Files.exists(mp3Path))
                                 Files.delete(mp3Path);
                         } catch (IOException e) {
                             logger.debug("文件删除失败");
@@ -205,12 +195,32 @@ public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
         return null;
     }
 
+    private void downloadMethods(DownloaderController itemPaneLocal, String refererUrl, List<String> vbUrls, String vbUrl, Path dirPath, Path flvPathTemp, AtomicLong size, AtomicLong allSize, AtomicInteger parts, StateCountDownLatch state) {
+        try {
+            RetryDownloader retryDownloader = new RetryDownloader(itemPaneLocal, size, allSize, parts);
+            DownloadEntity downloadEntity = new DownloadEntity(refererUrl, vbUrl, vbUrls, flvPathTemp, dirPath, 3);
+            Error error = retryDownloader.download(downloadEntity);
+            // 失败
+            if (Objects.nonNull(error.getE())) {
+                throw new RuntimeException(error.getE());
+            }
+        } catch (Throwable e) {
+            state.error = true;
+            itemPaneLocal.setState(DownloaderController.EXCEPTION);
+            throw new RuntimeException(e);
+        } finally {
+            state.countDown();
+        }
+    }
+
     private void removeListItem(NewVideoBean newVideoBean) {
         DownloadItemPane itemPane = (DownloadItemPane) newVideoBean.getPane();
         JFXListView<DownloadItemPaneEntity> listView = itemPane.getListView();
         ObservableList<DownloadItemPaneEntity> items = listView.getItems();
         int i = items.indexOf(itemPane.getEntity());
-        newVideoBean.getDownloadPane().getDownloadedPane().getDownloadedPaneContainer().getListView().getItems().add(items.get(i));
-        items.remove(i);
+        if (i != -1) {
+            newVideoBean.getDownloadPane().getDownloadedPane().getDownloadedPaneContainer().getListView().getItems().add(items.get(i));
+            items.remove(i);
+        }
     }
 }

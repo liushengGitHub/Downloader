@@ -1,7 +1,6 @@
 package liusheng.downloadCore.pane;
 
-import cn.hutool.core.util.ClassLoaderUtil;
-import cn.hutool.core.util.ClassUtil;
+import cn.hutool.core.util.StrUtil;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,10 +8,10 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import liusheng.downloadCore.executor.FailListExecutorService;
+import liusheng.downloadCore.config.SystemCodeConfig;
+import liusheng.downloadCore.executor.ListExecutorService;
 
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -37,7 +36,7 @@ public class BackgroundMenu extends Menu {
 
             @Override
             public void handle(ActionEvent event) {
-                FailListExecutorService.commonExecutorServicehelp().execute(() -> {
+                ListExecutorService.commonExecutorServicehelp().execute(() -> {
                     try {
 
                         Background background = new Background(new BackgroundImage(
@@ -75,31 +74,49 @@ public class BackgroundMenu extends Menu {
         }
 
         Path path = Paths.get("background");
+
         try {
+            if (!Files.exists(path)) {
+                Files.createDirectories(path);
+            }
+
+            String background = SystemCodeConfig.defaultMainBackground();
+            boolean blank = StrUtil.isBlank(background);
             List<MenuItem> menuItems = Files.list(path).map(file -> {
-                MenuItem menuItem = new MenuItem(file.getFileName().toString());
+                String s = file.getFileName().toString();
+                MenuItem menuItem = new MenuItem(s);
                 menuItem.setOnAction(new BackgroundAction(file));
+                if (!blank && background.equals(s)) {
+                    menuItem.fire();
+                }
+
                 return menuItem;
             }).collect(Collectors.toList());
 
             this.getItems().addAll(menuItems);
 
-            if (menuItems.size() > 0) {
+
+            if (blank && menuItems.size() > 0) {
                 menuItems.get(0).fire();
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         try {
-            List<MenuItem> items = Files.lines(Paths.get("background/colors")).map(str -> {
+            Path backgroundPath = Paths.get("background/colors");
+            if (!Files.exists(backgroundPath)){
+                return;
+            }
+            List<MenuItem> items = Files.lines(backgroundPath).map(str -> {
                 String[] pair = str.split(" ");
                 if (pair.length > 1) {
                     MenuItem menuItem = new MenuItem(pair[1]);
                     menuItem.setOnAction(new ColorBackground(pair[0]));
                     return menuItem;
                 }
-                return  null;
+                return null;
             }).filter(Objects::nonNull).collect(Collectors.toList());
 
             this.getItems().addAll(items);

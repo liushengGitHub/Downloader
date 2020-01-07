@@ -3,19 +3,15 @@ package liusheng.download.bilibili.parser;
 import com.jfoenix.controls.JFXListView;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.Pagination;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import liusheng.download.bilibili.BilibiliDownloadAction;
 import liusheng.download.bilibili.search.BilibiliSearchInfoParser;
 import liusheng.download.bilibili.search.BilibiliSearchPageParser;
-import liusheng.downloadCore.executor.FailListExecutorService;
+import liusheng.downloadCore.executor.ListExecutorService;
 import liusheng.downloadCore.executor.FailTask;
-import liusheng.downloadCore.pane.DownloadingPane;
-import liusheng.downloadCore.pane.PaginationVBox;
-import liusheng.downloadCore.pane.SearchItemController;
-import liusheng.downloadCore.pane.SearchItemPane;
+import liusheng.downloadCore.pane.*;
 import liusheng.downloadCore.search.SearchParam;
 import liusheng.downloadCore.util.BindUtils;
 import liusheng.downloadInterface.Parser;
@@ -48,7 +44,7 @@ public class BilibiliParser implements Parser<Object, Pane> {
 
         PaginationVBox main = new PaginationVBox(itemController);
         Pagination pagination = main.getPagination();
-        Map<Integer, JFXListView<SearchItemPane>> listViewMap = main.getListViewMap();
+        Map<Integer, JFXListView<AbstractSearchItemPane>> listViewMap = main.getListViewMap();
         DownloadingPane downloadingPane = param.getDownloadingPane();
 
         main.setAlignment(Pos.CENTER_LEFT);
@@ -59,7 +55,7 @@ public class BilibiliParser implements Parser<Object, Pane> {
 
 
         // 失败k可以重试3此
-        FailListExecutorService.commonExecutorService().execute(new FailTask(() -> {
+        ListExecutorService.commonExecutorService().execute(new FailTask(() -> {
             try {
                 Object o = infoParser.parse(String.format(param.getPattern(), param.getKeyWord(), 1));
                 SearchPage searchPage = pageParser.parse(o);
@@ -67,7 +63,7 @@ public class BilibiliParser implements Parser<Object, Pane> {
                 List<SearchItem> items = searchPage.getItems();
 
                 listViewMap.computeIfAbsent(0, i -> {
-                    JFXListView<SearchItemPane> listView = new JFXListView<>();
+                    JFXListView<AbstractSearchItemPane> listView = new JFXListView<>();
 
                   /*  listView.setCellFactory(ls -> {
                         return new ListCell<SearchItemPane>() {
@@ -97,7 +93,7 @@ public class BilibiliParser implements Parser<Object, Pane> {
                     pagination.setPageCount(searchPage.getPages());
                     pagination.setPageFactory(index -> {
 
-                        JFXListView<SearchItemPane> listView = listViewMap.get(index);
+                        JFXListView<AbstractSearchItemPane> listView = listViewMap.get(index);
 
                         if (Objects.nonNull(listView)) return listView;
                         listView = new JFXListView<>();
@@ -105,8 +101,8 @@ public class BilibiliParser implements Parser<Object, Pane> {
                         BindUtils.bind(listView.prefHeightProperty(), pagination.heightProperty().subtract(50));
                         listViewMap.put(index, listView);
 
-                        JFXListView<SearchItemPane> finalListView = listView;
-                        FailListExecutorService.commonExecutorService().execute(new FailTask(() -> {
+                        JFXListView<AbstractSearchItemPane> finalListView = listView;
+                        ListExecutorService.commonExecutorService().execute(new FailTask(() -> {
                             String format = String.format(param.getPattern(), param.getKeyWord(), index + 1);
                             try {
                                 Object o1 = infoParser.parse(format);
@@ -138,32 +134,31 @@ public class BilibiliParser implements Parser<Object, Pane> {
         return main;
     }
 
-    private void setListView(JFXListView<SearchItemPane> listView, List<SearchItem> items, Pagination pagination, PaginationVBox paginationVBox, DownloadingPane pane) {
-        List<SearchItemPane> searchItemPanes = IntStream.range(0, items.size()).boxed()
+    private void setListView(JFXListView<AbstractSearchItemPane> listView, List<SearchItem> items, Pagination pagination, PaginationVBox paginationVBox, DownloadingPane pane) {
+        List<SearchDownloadItemPane> searchDownloadItemPanes = IntStream.range(0, items.size()).boxed()
                 .map(i -> {
                     SearchItem item = items.get(i);
-                    SearchItemPane searchItemPane = new SearchItemPane(i, item, pane.getDownloadingPaneContainer(),
-                            new BilibiliDownloadAction(item.getHref(), pane.getDownloadingPaneContainer()));
-
-                    BindUtils.bind(searchItemPane.prefHeightProperty(), listView.heightProperty().multiply(0.20));
+                    SearchDownloadItemPane searchDownloadItemPane = new SearchDownloadItemPane(i, item, pane.getDownloadingPaneContainer());
+                    searchDownloadItemPane.getDownload().setOnAction(new BilibiliDownloadAction(item.getHref(), pane.getDownloadingPaneContainer()));
+                    BindUtils.bind(searchDownloadItemPane.prefHeightProperty(), listView.heightProperty().multiply(0.20));
                     // 不让横向滚动条出现
-                    BindUtils.bind(searchItemPane.prefWidthProperty(), listView.widthProperty().multiply(0.9));
+                    BindUtils.bind(searchDownloadItemPane.prefWidthProperty(), listView.widthProperty().multiply(0.9));
 
-                    FailListExecutorService.commonExecutorService().execute(() -> {
+                    ListExecutorService.commonExecutorService().execute(() -> {
                         String src = item.getImgSrc();
                         paginationVBox.getImageMap().computeIfAbsent(src, s -> {
                             Image image = new Image(src, 100, 30, true, true);
                             Platform.runLater(() -> {
-                                searchItemPane.getImageView().setImage(image);
+                                searchDownloadItemPane.getImageView().setImage(image);
                             });
                             return image;
                         });
 
                     });
-                    return searchItemPane;
+                    return searchDownloadItemPane;
                 }).collect(Collectors.toList());
 
-        listView.getItems().addAll(searchItemPanes);
+        listView.getItems().addAll(searchDownloadItemPanes);
         BindUtils.bind(listView.prefWidthProperty(), pagination.widthProperty());
         BindUtils.bind(listView.prefHeightProperty(), pagination.heightProperty().subtract(50));
     }

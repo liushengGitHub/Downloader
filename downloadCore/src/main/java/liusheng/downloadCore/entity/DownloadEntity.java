@@ -12,11 +12,30 @@ public class DownloadEntity {
         this.refererUrl = refererUrl;
     }
 
+    /**
+     *  来源地址
+     */
     private String refererUrl;
+    /**
+     * 下载的url
+     */
     private String url;
+    /**
+     * 备用的urls
+     */
     private List<String> bUrls;
+
+    /**
+     * 下载文件路径
+     */
     private Path filePath;
+    /**
+     * 下载文件的目录
+     */
     private Path dirFile;
+    /**
+     * 重试次数
+     */
     private int retry;
     public DownloadEntity(String refererUrl, String url, List<String>  bUrls, Path filePath, Path dirFile, int retry) {
         this.refererUrl = refererUrl;

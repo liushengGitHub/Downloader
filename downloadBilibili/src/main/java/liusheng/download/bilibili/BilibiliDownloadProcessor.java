@@ -1,6 +1,5 @@
 package liusheng.download.bilibili;
 
-import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
 import javafx.application.Platform;
@@ -10,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.SingleSelectionModel;
 import liusheng.download.bilibili.entity.*;
 import liusheng.downloadCore.*;
-import liusheng.downloadCore.executor.FailListExecutorService;
+import liusheng.downloadCore.executor.ListExecutorService;
 import liusheng.downloadCore.executor.FailTask;
 import liusheng.downloadCore.pane.DownloadListDialogItemPane;
 import liusheng.downloadCore.pane.DownloadingPaneContainer;
@@ -30,7 +29,6 @@ public class BilibiliDownloadProcessor implements DownloadProcessor {
     private final List<AllPageBean> pageBeanList;
     private final PagesBean pagesBean;
     private final Logger logger = Logger.getLogger(BilibiliDownloadProcessor.class);
-    private final Semaphore semaphore;
     private final SubPageDownload pageDownload;
     private final List<Integer> qualityList = Arrays.asList(16, 32, 48, 64, 80);
 
@@ -38,10 +36,9 @@ public class BilibiliDownloadProcessor implements DownloadProcessor {
         return pageDownload;
     }
 
-    public BilibiliDownloadProcessor(List<AllPageBean> pageBeanList, PagesBean pagesBean, Semaphore semaphore, SubPageDownload pageDownload) {
+    public BilibiliDownloadProcessor(List<AllPageBean> pageBeanList, PagesBean pagesBean, SubPageDownload pageDownload) {
         this.pageBeanList = pageBeanList;
         this.pagesBean = pagesBean;
-        this.semaphore = semaphore;
         this.pageDownload = pageDownload;
     }
 
@@ -80,7 +77,7 @@ public class BilibiliDownloadProcessor implements DownloadProcessor {
         // 这个视频的名字
         String videoName = Optional.ofNullable(pagesBean).map(p -> p.getVideoData()).map(videoDataBean -> StringUtils.isEmpty(videoDataBean.getTitle())
                 ? UUID.randomUUID().toString() : StringUtils.fileNameHandle(videoDataBean.getTitle())).get();
-        FailListExecutorService.commonExecutorService().execute(new FailTask(() -> {
+        ListExecutorService.commonExecutorService().execute(new FailTask(() -> {
 
             IntStream.range(0, selectAllPageBean.size()).forEach(selectAllPageBeanIndex -> {
 

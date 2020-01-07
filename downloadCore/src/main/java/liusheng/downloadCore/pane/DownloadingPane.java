@@ -1,13 +1,18 @@
 package liusheng.downloadCore.pane;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import liusheng.downloadCore.entity.DownloadItemPaneEntity;
-import liusheng.downloadCore.executor.FailListExecutorService;
+import liusheng.downloadCore.executor.ListExecutorService;
 import liusheng.downloadCore.util.BindUtils;
 import liusheng.downloadInterface.DownloaderController;
+
+import java.util.LinkedList;
 
 public class DownloadingPane extends VBox {
 
@@ -31,33 +36,40 @@ public class DownloadingPane extends VBox {
         downloadingPaneContainer = new DownloadingPaneContainer(downloadPane);
         downloadingPaneController = new DownloadingPaneController();
 
-        ObservableList<DownloadItemPaneEntity> items = downloadingPaneContainer.getListView().getItems();
+        JFXListView<DownloadItemPaneEntity> listView = downloadingPaneContainer.getListView();
         downloadingPaneController.getAllCancel().setOnAction((e) -> {
-            items.forEach(entity -> {
-                Node pane = entity.getAbstractVideoBean().getPane();
+            Platform.runLater(() -> {
+                ObservableList<DownloadItemPaneEntity> items = listView.getItems();
+                // 移除所有
+                listView.setItems(FXCollections.observableList(new LinkedList<>()));
+                listView.refresh();
 
-                if (pane instanceof DownloadItemPane) {
-                    DownloadItemPane itemPane = (DownloadItemPane) pane;
-                    itemPane.getLocal().cancel();
+                items.forEach(entity -> {
+                    Node pane = entity.getAbstractDataBean().getPane();
 
-                }
+                    if (pane instanceof DownloadItemPane) {
+                        DownloadItemPane itemPane = (DownloadItemPane) pane;
+                        itemPane.getLocal().cancel();
+                    }
+                });
             });
-            // 移除所有
-            items.removeAll();
+
             // 清空任务队列
-            FailListExecutorService.getTaskQueue().clear();
+            ListExecutorService.getTaskQueue().clear();
         });
 
         JFXButton allPause = downloadingPaneController.getAllPause();
         allPause.setOnAction(e -> {
+
             if (p) {
                 allPause.setText("全部开始");
             } else {
                 allPause.setText("全部暂停");
             }
+            ObservableList<DownloadItemPaneEntity> items = listView.getItems();
             p = !p;
             items.forEach(entity -> {
-                Node pane = entity.getAbstractVideoBean().getPane();
+                Node pane = entity.getAbstractDataBean().getPane();
 
                 if (pane instanceof DownloadItemPane) {
                     DownloadItemPane itemPane = (DownloadItemPane) pane;

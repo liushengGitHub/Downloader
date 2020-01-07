@@ -7,6 +7,6 @@ import liusheng.downloadInterface.SearchPluginHolder;
 public class ManhuaduiSearchPlugin implements SearchPlugin {
     @Override
     public SearchPluginHolder get() {
-        return  new SearchPluginHolder(new ManhuaduiPaneParser(),new SearchLabel("漫画堆","https://www.manhuadui.com/search/?keywords=%s&page=%s"));
+        return  new SearchPluginHolder(new ManhuaduiPaneParserDownload(),new SearchLabel("漫画堆","https://www.manhuadui.com/search/?keywords=%s&page=%s"));
     }
 }

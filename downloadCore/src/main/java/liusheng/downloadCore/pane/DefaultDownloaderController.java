@@ -2,8 +2,11 @@ package liusheng.downloadCore.pane;
 
 import liusheng.downloadInterface.DownloaderController;
 
-public class DefaultDownloaderController implements DownloaderController {
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.ExecutorService;
 
+public class DefaultDownloaderController implements DownloaderController {
     private int state = DownloaderController.INIT;
 
     @Override
@@ -17,9 +20,7 @@ public class DefaultDownloaderController implements DownloaderController {
 
     @Override
     public synchronized void cancel() {
-        if (state != DownloaderController.CANCEL) {
-            state = DownloaderController.CANCEL;
-        }
+        setState(DownloaderController.CANCEL);
     }
 
     @Override
@@ -29,6 +30,9 @@ public class DefaultDownloaderController implements DownloaderController {
 
     @Override
     public synchronized void setState(int state) {
-         this.state = state;
+        if (this.state == DownloaderController.CANCEL || this.state == DownloaderController.FINISHED) {
+            return;
+        }
+        this.state = state;
     }
 }

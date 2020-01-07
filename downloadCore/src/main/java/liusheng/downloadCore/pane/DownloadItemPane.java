@@ -102,8 +102,8 @@ public class DownloadItemPane extends VBox {
         top = new HBox();
         middle = new HBox();
         bottom = new HBox();
-        stateLabel = new Label("正在下载...");
-        pathLabel = new Label("C:\\Users\\LiuSheng\\IdeaProjects\\testGoogle\\src\\main\\java");
+        stateLabel = new Label("正在等待");
+        pathLabel = new Label();
         cancel = new JFXButton("取消");
         retry = new JFXButton("重试");
         progressValue = new Label("");
@@ -149,8 +149,8 @@ public class DownloadItemPane extends VBox {
         BindUtils.bind(middle.prefWidthProperty(), this.widthProperty());
         BindUtils.bind(middle.prefHeightProperty(), this.heightProperty().multiply(0.4));
         BindUtils.bind(pathLabel.prefHeightProperty(), middle.heightProperty());
-        BindUtils.bind(pathLabel.prefWidthProperty(), middle.widthProperty().multiply(0.5));
-        BindUtils.bind(stateLabel.prefWidthProperty(), middle.widthProperty().multiply(0.5));
+        BindUtils.bind(pathLabel.prefWidthProperty(), middle.widthProperty().multiply(0.7));
+        BindUtils.bind(stateLabel.prefWidthProperty(), middle.widthProperty().multiply(0.3));
         BindUtils.bind(stateLabel.prefHeightProperty(), middle.heightProperty());
         BindUtils.bind(progressValue.prefHeightProperty(), top.heightProperty());
         BindUtils.bind(progressValue.prefWidthProperty(), top.prefWidthProperty().multiply(0.2));

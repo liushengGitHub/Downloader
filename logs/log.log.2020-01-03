@@ -1,0 +1,1570 @@
+2020-01-03 19:06:02  [ pool-3-thread-4:0 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=2
+2020-01-03 19:06:02  [ pool-3-thread-3:3 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=1
+2020-01-03 19:06:02  [ pool-3-thread-6:2 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=4
+2020-01-03 19:06:02  [ pool-3-thread-7:2 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=5
+2020-01-03 19:06:02  [ pool-3-thread-5:2 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=3
+2020-01-03 19:06:03  [ pool-3-thread-7:492 ] - [ INFO ]  115015047
+2020-01-03 19:06:03  [ pool-3-thread-11:521 ] - [ INFO ]  1296028830
+2020-01-03 19:06:03  [ pool-3-thread-5:523 ] - [ INFO ]  111602075
+2020-01-03 19:06:03  [ pool-3-thread-9:595 ] - [ INFO ]  377576630
+2020-01-03 19:06:03  [ pool-3-thread-3:563 ] - [ INFO ]  116088854
+2020-01-03 19:06:03  [ pool-3-thread-8:540 ] - [ INFO ]  306209817
+2020-01-03 19:06:03  [ pool-3-thread-4:535 ] - [ INFO ]  141386103
+2020-01-03 19:06:03  [ pool-3-thread-12:529 ] - [ INFO ]  365984502
+2020-01-03 19:06:03  [ pool-3-thread-6:603 ] - [ INFO ]  254880344
+2020-01-03 19:06:03  [ pool-3-thread-10:769 ] - [ INFO ]  315329109
+2020-01-03 19:06:31  [ pool-3-thread-4:28546 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 19:06:31  [ pool-3-thread-4:28554 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=2 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 19:06:31  [ pool-3-thread-5:28553 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 19:06:31  [ pool-3-thread-6:28550 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 19:06:31  [ pool-3-thread-7:28546 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 19:06:31  [ pool-3-thread-5:28561 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=3 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 19:06:31  [ pool-3-thread-6:28560 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=4 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 19:06:31  [ pool-3-thread-7:28574 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=5 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 19:06:31  [ pool-3-thread-3:28696 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 19:06:31  [ pool-3-thread-3:28697 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=1 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 19:07:26  [ pool-3-thread-3:0 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=1
+2020-01-03 19:07:26  [ pool-3-thread-6:8 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=4
+2020-01-03 19:07:26  [ pool-3-thread-7:7 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=5
+2020-01-03 19:07:26  [ pool-3-thread-4:7 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=2
+2020-01-03 19:07:26  [ pool-3-thread-5:10 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=3
+2020-01-03 19:07:27  [ pool-3-thread-3:540 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=1=116088854
+2020-01-03 19:07:27  [ pool-3-thread-10:558 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=1=306209817
+2020-01-03 19:07:27  [ pool-3-thread-9:589 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=3=365984502
+2020-01-03 19:07:27  [ pool-3-thread-12:636 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=5=315329109
+2020-01-03 19:07:27  [ pool-3-thread-5:681 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=3=111602075
+2020-01-03 19:07:27  [ pool-3-thread-7:685 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=5=115015047
+2020-01-03 19:07:28  [ pool-3-thread-4:1216 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=2=141386103
+2020-01-03 19:07:28  [ pool-3-thread-6:1293 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=4=254880344
+2020-01-03 19:07:28  [ pool-3-thread-11:1295 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=2=377576630
+2020-01-03 19:07:28  [ pool-3-thread-8:1585 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=4=1296028830
+2020-01-03 19:28:22  [ pool-3-thread-3:1255969 ] - [ INFO ]  下载成功 : https://www.bilibili.com/video/av70384013?p=1
+2020-01-03 19:28:22  [ pool-3-thread-13:1255973 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=6
+2020-01-03 19:28:24  [ pool-3-thread-13:1257084 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=6=209185475
+2020-01-03 19:28:24  [ pool-3-thread-14:1257863 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=6=775548611
+2020-01-03 19:43:31  [ pool-3-thread-4:2164569 ] - [ INFO ]  下载成功 : https://www.bilibili.com/video/av70384013?p=2
+2020-01-03 19:43:31  [ pool-3-thread-15:2164575 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=7
+2020-01-03 19:43:34  [ pool-3-thread-16:2167937 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=7=389831642
+2020-01-03 19:43:35  [ pool-3-thread-15:2168789 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=7=104349664
+2020-01-03 19:52:40  [ pool-3-thread-7:2713949 ] - [ INFO ]  下载成功 : https://www.bilibili.com/video/av70384013?p=5
+2020-01-03 19:52:40  [ pool-3-thread-17:2713975 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=8
+2020-01-03 19:52:44  [ pool-3-thread-17:2717432 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=8=168769532
+2020-01-03 19:52:44  [ pool-3-thread-18:2717579 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=8=528917905
+2020-01-03 20:12:32  [ pool-3-thread-5:3905321 ] - [ INFO ]  下载成功 : https://www.bilibili.com/video/av70384013?p=3
+2020-01-03 20:12:32  [ pool-3-thread-19:3905790 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=9
+2020-01-03 20:12:33  [ pool-3-thread-20:3906139 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=9=270398521
+2020-01-03 20:12:33  [ pool-3-thread-19:3906143 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=9=102847551
+2020-01-03 20:16:49  [ pool-3-thread-6:4162879 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:144)
+	... 9 more
+2020-01-03 20:16:49  [ pool-3-thread-6:4162900 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=4 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:16:49  [ pool-3-thread-22:4162904 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=10
+2020-01-03 20:16:50  [ pool-3-thread-22:4163250 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=10=246818465
+2020-01-03 20:16:50  [ pool-3-thread-23:4163254 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=10=884820066
+2020-01-03 20:26:29  [ pool-3-thread-19:4742144 ] - [ INFO ]  下载成功 : https://www.bilibili.com/video/av70384013?p=9
+2020-01-03 20:26:29  [ pool-3-thread-24:4742162 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=11
+2020-01-03 20:26:29  [ pool-3-thread-24:4742858 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=11=144304017
+2020-01-03 20:26:30  [ pool-3-thread-25:4743244 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=11=429844930
+2020-01-03 20:29:29  [ pool-3-thread-15:4922938 ] - [ INFO ]  下载成功 : https://www.bilibili.com/video/av70384013?p=7
+2020-01-03 20:29:29  [ pool-3-thread-26:4922959 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=12
+2020-01-03 20:29:30  [ pool-3-thread-26:4923622 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=12=229446219
+2020-01-03 20:29:31  [ pool-3-thread-27:4924318 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=12=944214134
+2020-01-03 20:44:59  [ pool-3-thread-13:5852476 ] - [ INFO ]  下载成功 : https://www.bilibili.com/video/av70384013?p=6
+2020-01-03 20:44:59  [ pool-3-thread-28:5852501 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=13
+2020-01-03 20:44:59  [ pool-3-thread-28:5852898 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=13=123171900
+2020-01-03 20:45:00  [ pool-3-thread-29:5853110 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=13=425401823
+2020-01-03 20:49:08  [ pool-3-thread-24:6101055 ] - [ INFO ]  下载成功 : https://www.bilibili.com/video/av70384013?p=11
+2020-01-03 20:49:08  [ pool-3-thread-30:6101068 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=14
+2020-01-03 20:49:08  [ pool-3-thread-30:6101457 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=14=144104796
+2020-01-03 20:49:09  [ pool-3-thread-31:6102213 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=14=508749249
+2020-01-03 20:51:11  [ pool-3-thread-26:6224450 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:11  [ pool-3-thread-26:6224451 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=12 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:11  [ pool-3-thread-32:6224453 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=15
+2020-01-03 20:51:11  [ pool-3-thread-33:6224809 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=15=489245246
+2020-01-03 20:51:11  [ pool-3-thread-32:6224889 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=15=131723826
+2020-01-03 20:51:12  [ pool-3-thread-28:6225107 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:12  [ pool-3-thread-28:6225107 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=13 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:12  [ pool-3-thread-34:6225120 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=16
+2020-01-03 20:51:12  [ pool-3-thread-30:6225519 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:12  [ pool-3-thread-30:6225520 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=14 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:12  [ pool-3-thread-35:6225520 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=17
+2020-01-03 20:51:12  [ pool-3-thread-36:6225741 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=16=476874096
+2020-01-03 20:51:12  [ pool-3-thread-34:6225763 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=16=127250793
+2020-01-03 20:51:12  [ pool-3-thread-32:6225926 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:12  [ pool-3-thread-32:6225927 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=15 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:12  [ pool-3-thread-38:6225932 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=18
+2020-01-03 20:51:12  [ pool-3-thread-37:6225961 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=17=152720053
+2020-01-03 20:51:12  [ pool-3-thread-35:6226011 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=17=47515172
+2020-01-03 20:51:13  [ pool-3-thread-34:6226234 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:13  [ pool-3-thread-34:6226237 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=16 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:13  [ pool-3-thread-39:6226238 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=19
+2020-01-03 20:51:13  [ pool-3-thread-35:6226413 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:13  [ pool-3-thread-35:6226414 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=17 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:13  [ pool-3-thread-40:6226417 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=20
+2020-01-03 20:51:13  [ pool-3-thread-41:6226784 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=20=457230684
+2020-01-03 20:51:13  [ pool-3-thread-42:6226870 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=18=413989104
+2020-01-03 20:51:13  [ pool-3-thread-40:6226898 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=20=131666501
+2020-01-03 20:51:14  [ pool-3-thread-43:6227074 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=19=539276340
+2020-01-03 20:51:14  [ pool-3-thread-39:6227146 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=19=120602821
+2020-01-03 20:51:14  [ pool-3-thread-38:6227157 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=18=116026821
+2020-01-03 20:51:14  [ pool-3-thread-38:6227158 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:14  [ pool-3-thread-38:6227159 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=18 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:14  [ pool-3-thread-44:6227162 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=21
+2020-01-03 20:51:14  [ pool-3-thread-39:6227248 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:14  [ pool-3-thread-39:6227249 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=19 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:14  [ pool-3-thread-45:6227249 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=22
+2020-01-03 20:51:14  [ pool-3-thread-40:6227498 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:14  [ pool-3-thread-40:6227498 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=20 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:14  [ pool-3-thread-46:6227500 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=23
+2020-01-03 20:51:14  [ pool-3-thread-48:6227815 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=21=539932026
+2020-01-03 20:51:14  [ pool-3-thread-46:6227839 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=23=16332086
+2020-01-03 20:51:14  [ pool-3-thread-44:6227933 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=21=128718648
+2020-01-03 20:51:14  [ pool-3-thread-44:6227935 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:14  [ pool-3-thread-44:6227936 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=21 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:14  [ pool-3-thread-47:6227937 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=23=480908652
+2020-01-03 20:51:14  [ pool-3-thread-49:6227938 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=24
+2020-01-03 20:51:15  [ pool-3-thread-50:6228304 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=22=260914863
+2020-01-03 20:51:15  [ pool-3-thread-51:6228318 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=24=488262693
+2020-01-03 20:51:15  [ pool-3-thread-45:6228519 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=22=59190878
+2020-01-03 20:51:15  [ pool-3-thread-45:6228521 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:15  [ pool-3-thread-45:6228521 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=22 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:15  [ pool-3-thread-52:6228525 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=25
+2020-01-03 20:51:15  [ pool-3-thread-46:6228713 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:15  [ pool-3-thread-46:6228714 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=23 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:15  [ pool-3-thread-54:6228715 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=26
+2020-01-03 20:51:15  [ pool-3-thread-52:6228940 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=25=7768468
+2020-01-03 20:51:15  [ pool-3-thread-53:6228940 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=25=162535414
+2020-01-03 20:51:16  [ pool-3-thread-49:6229141 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=24=15746112
+2020-01-03 20:51:16  [ pool-3-thread-49:6229143 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:16  [ pool-3-thread-49:6229144 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=24 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:16  [ pool-3-thread-55:6229145 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=26=560883790
+2020-01-03 20:51:16  [ pool-3-thread-56:6229149 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=27
+2020-01-03 20:51:16  [ pool-3-thread-54:6229186 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=26=15958716
+2020-01-03 20:51:16  [ pool-3-thread-52:6229408 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:16  [ pool-3-thread-52:6229409 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=25 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:16  [ pool-3-thread-57:6229413 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=28
+2020-01-03 20:51:16  [ pool-3-thread-54:6229808 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:16  [ pool-3-thread-54:6229809 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=26 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:16  [ pool-3-thread-59:6229812 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=29
+2020-01-03 20:51:16  [ pool-3-thread-58:6229952 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=28=363774481
+2020-01-03 20:51:17  [ pool-3-thread-57:6230205 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=28=13481245
+2020-01-03 20:51:17  [ pool-3-thread-56:6230365 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=27=16252968
+2020-01-03 20:51:17  [ pool-3-thread-59:6230445 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=29=56648994
+2020-01-03 20:51:17  [ pool-3-thread-61:6230744 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=29=134724383
+2020-01-03 20:51:17  [ pool-3-thread-60:6230834 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=27=532553616
+2020-01-03 20:51:17  [ pool-3-thread-56:6230836 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:17  [ pool-3-thread-56:6230837 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=27 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:17  [ pool-3-thread-62:6230840 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=30
+2020-01-03 20:51:18  [ pool-3-thread-57:6231149 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:18  [ pool-3-thread-57:6231150 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=28 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:18  [ pool-3-thread-63:6231212 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=31
+2020-01-03 20:51:18  [ pool-3-thread-59:6231423 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:18  [ pool-3-thread-59:6231424 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=29 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:18  [ pool-3-thread-64:6231425 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=32
+2020-01-03 20:51:18  [ pool-3-thread-65:6231683 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=30=223412876
+2020-01-03 20:51:18  [ pool-3-thread-62:6231796 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=30=114767842
+2020-01-03 20:51:18  [ pool-3-thread-62:6231797 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:18  [ pool-3-thread-62:6231798 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=30 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:18  [ pool-3-thread-66:6231801 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=33
+2020-01-03 20:51:19  [ pool-3-thread-67:6232099 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=33=214493736
+2020-01-03 20:51:19  [ pool-3-thread-63:6232233 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=31=120125926
+2020-01-03 20:51:19  [ pool-3-thread-64:6232249 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=32=128451527
+2020-01-03 20:51:19  [ pool-3-thread-68:6232249 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=31=412326142
+2020-01-03 20:51:19  [ pool-3-thread-63:6232252 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:19  [ pool-3-thread-63:6232252 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=31 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:19  [ pool-3-thread-70:6232256 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=34
+2020-01-03 20:51:19  [ pool-3-thread-66:6232319 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=33=74156004
+2020-01-03 20:51:19  [ pool-3-thread-69:6232801 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=32=449223178
+2020-01-03 20:51:19  [ pool-3-thread-64:6232803 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:19  [ pool-3-thread-64:6232804 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=32 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:19  [ pool-3-thread-71:6232821 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=35
+2020-01-03 20:51:19  [ pool-3-thread-66:6233039 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:19  [ pool-3-thread-66:6233040 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=33 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:19  [ pool-3-thread-73:6233041 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=36
+2020-01-03 20:51:20  [ pool-3-thread-72:6233088 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=34=357166186
+2020-01-03 20:51:20  [ pool-3-thread-73:6233315 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=36=79245067
+2020-01-03 20:51:20  [ pool-3-thread-75:6233481 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=35=602270963
+2020-01-03 20:51:20  [ pool-3-thread-74:6233481 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=36=404584956
+2020-01-03 20:51:20  [ pool-3-thread-70:6233589 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=34=71840618
+2020-01-03 20:51:20  [ pool-3-thread-70:6233591 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:20  [ pool-3-thread-70:6233592 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=34 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:20  [ pool-3-thread-76:6233594 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=37
+2020-01-03 20:51:20  [ pool-3-thread-71:6233629 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=35=39825204
+2020-01-03 20:51:20  [ pool-3-thread-71:6233773 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:20  [ pool-3-thread-71:6233773 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=35 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:20  [ pool-3-thread-77:6233774 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=38
+2020-01-03 20:51:21  [ pool-3-thread-73:6234173 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:21  [ pool-3-thread-73:6234174 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=36 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:21  [ pool-3-thread-79:6234175 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=39
+2020-01-03 20:51:21  [ pool-3-thread-77:6234274 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=38=56913839
+2020-01-03 20:51:21  [ pool-3-thread-78:6234438 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=38=301078180
+2020-01-03 20:51:21  [ pool-3-thread-79:6234505 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=39=118567550
+2020-01-03 20:51:21  [ pool-3-thread-80:6234525 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=39=359666075
+2020-01-03 20:51:22  [ pool-3-thread-76:6235186 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=37=60441804
+2020-01-03 20:51:22  [ pool-3-thread-81:6235601 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=37=347774568
+2020-01-03 20:51:22  [ pool-3-thread-76:6235603 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:22  [ pool-3-thread-76:6235604 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=37 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:22  [ pool-3-thread-82:6235608 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=40
+2020-01-03 20:51:22  [ pool-3-thread-83:6236008 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=40=269933238
+2020-01-03 20:51:23  [ pool-3-thread-77:6236147 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:23  [ pool-3-thread-77:6236147 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=38 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:23  [ pool-3-thread-84:6236154 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=41
+2020-01-03 20:51:23  [ pool-3-thread-82:6236217 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=40=104125903
+2020-01-03 20:51:23  [ pool-3-thread-79:6236381 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:23  [ pool-3-thread-79:6236381 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=39 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:23  [ pool-3-thread-86:6236391 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=42
+2020-01-03 20:51:23  [ pool-3-thread-82:6236560 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:23  [ pool-3-thread-82:6236561 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=40 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:23  [ pool-3-thread-87:6236561 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=43
+2020-01-03 20:51:23  [ pool-3-thread-85:6236644 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=41=610101355
+2020-01-03 20:51:23  [ pool-3-thread-84:6236741 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=41=164086316
+2020-01-03 20:51:23  [ pool-3-thread-84:6236748 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:23  [ pool-3-thread-84:6236748 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=41 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:23  [ pool-3-thread-88:6236759 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=44
+2020-01-03 20:51:24  [ pool-3-thread-89:6237117 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=44=324670988
+2020-01-03 20:51:24  [ pool-3-thread-91:6237123 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=42=315199735
+2020-01-03 20:51:24  [ pool-3-thread-86:6237168 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=42=84112238
+2020-01-03 20:51:24  [ pool-3-thread-86:6237170 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:24  [ pool-3-thread-86:6237170 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=42 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:24  [ pool-3-thread-92:6237171 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=45
+2020-01-03 20:51:24  [ pool-3-thread-87:6237361 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=43=136483899
+2020-01-03 20:51:24  [ pool-3-thread-88:6237415 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=44=119275492
+2020-01-03 20:51:24  [ pool-3-thread-90:6237630 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=43=356323043
+2020-01-03 20:51:24  [ pool-3-thread-87:6237631 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:24  [ pool-3-thread-87:6237632 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=43 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:24  [ pool-3-thread-93:6237634 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=46
+2020-01-03 20:51:24  [ pool-3-thread-88:6237915 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:24  [ pool-3-thread-88:6237916 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=44 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:24  [ pool-3-thread-95:6237923 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=47
+2020-01-03 20:51:24  [ pool-3-thread-94:6238011 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=46=345376416
+2020-01-03 20:51:25  [ pool-3-thread-93:6238403 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=46=125969825
+2020-01-03 20:51:25  [ pool-3-thread-95:6238410 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=47=9362712
+2020-01-03 20:51:25  [ pool-3-thread-96:6238757 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=47=27829822
+2020-01-03 20:51:25  [ pool-3-thread-92:6238949 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=45=117438038
+2020-01-03 20:51:26  [ pool-3-thread-97:6239233 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=45=272880241
+2020-01-03 20:51:26  [ pool-3-thread-92:6239236 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:26  [ pool-3-thread-92:6239236 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=45 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:26  [ pool-3-thread-98:6239238 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=48
+2020-01-03 20:51:26  [ pool-3-thread-93:6239487 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:26  [ pool-3-thread-93:6239488 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=46 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:26  [ pool-3-thread-99:6239494 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=49
+2020-01-03 20:51:26  [ pool-3-thread-95:6239634 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:26  [ pool-3-thread-95:6239635 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=47 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:26  [ pool-3-thread-100:6239639 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=50
+2020-01-03 20:51:26  [ pool-3-thread-100:6239972 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=50=96947961
+2020-01-03 20:51:27  [ pool-3-thread-101:6240090 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=50=324735894
+2020-01-03 20:51:27  [ pool-3-thread-98:6240248 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=48=119246483
+2020-01-03 20:51:27  [ pool-3-thread-99:6240308 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=49=122119179
+2020-01-03 20:51:27  [ pool-3-thread-102:6240573 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=49=400655817
+2020-01-03 20:51:28  [ pool-3-thread-103:6241583 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=48=356153449
+2020-01-03 20:51:28  [ pool-3-thread-98:6241585 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:28  [ pool-3-thread-98:6241585 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=48 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:28  [ pool-3-thread-104:6241589 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=51
+2020-01-03 20:51:28  [ pool-3-thread-99:6241749 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:28  [ pool-3-thread-99:6241749 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=49 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:28  [ pool-3-thread-105:6241752 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=52
+2020-01-03 20:51:28  [ pool-3-thread-106:6241872 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=51=361395667
+2020-01-03 20:51:28  [ pool-3-thread-100:6241919 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:28  [ pool-3-thread-100:6241920 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=50 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:28  [ pool-3-thread-104:6241924 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=51=112460726
+2020-01-03 20:51:28  [ pool-3-thread-107:6241929 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=53
+2020-01-03 20:51:29  [ pool-3-thread-104:6242079 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:29  [ pool-3-thread-104:6242080 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=51 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:29  [ pool-3-thread-108:6242088 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=54
+2020-01-03 20:51:29  [ pool-3-thread-110:6242316 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=54=366661569
+2020-01-03 20:51:29  [ pool-3-thread-109:6242350 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=53=236447509
+2020-01-03 20:51:29  [ pool-3-thread-108:6242550 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=54=116172944
+2020-01-03 20:51:29  [ pool-3-thread-111:6242587 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=52=538873051
+2020-01-03 20:51:29  [ pool-3-thread-107:6242780 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=53=109677361
+2020-01-03 20:51:30  [ pool-3-thread-105:6243141 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=52=165740012
+2020-01-03 20:51:30  [ pool-3-thread-105:6243142 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:30  [ pool-3-thread-105:6243143 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=52 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:30  [ pool-3-thread-112:6243144 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=55
+2020-01-03 20:51:30  [ pool-3-thread-107:6243567 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:30  [ pool-3-thread-107:6243568 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=53 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:30  [ pool-3-thread-113:6243572 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=56
+2020-01-03 20:51:30  [ pool-3-thread-108:6243758 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:30  [ pool-3-thread-108:6243759 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=54 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:30  [ pool-3-thread-115:6243760 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=57
+2020-01-03 20:51:31  [ pool-3-thread-116:6244055 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=57=370730977
+2020-01-03 20:51:31  [ pool-3-thread-114:6244248 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=56=101705318
+2020-01-03 20:51:31  [ pool-3-thread-113:6244273 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=56=34506527
+2020-01-03 20:51:31  [ pool-3-thread-117:6244449 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=55=450690073
+2020-01-03 20:51:31  [ pool-3-thread-115:6244470 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=57=125175657
+2020-01-03 20:51:31  [ pool-3-thread-112:6244970 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=55=124101286
+2020-01-03 20:51:31  [ pool-3-thread-112:6244971 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:31  [ pool-3-thread-112:6244972 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=55 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:31  [ pool-3-thread-118:6244973 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=58
+2020-01-03 20:51:32  [ pool-3-thread-113:6245120 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:32  [ pool-3-thread-113:6245121 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=56 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:32  [ pool-3-thread-119:6245124 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=59
+2020-01-03 20:51:32  [ pool-3-thread-115:6245333 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:32  [ pool-3-thread-115:6245333 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=57 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:32  [ pool-3-thread-121:6245336 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=60
+2020-01-03 20:51:32  [ pool-3-thread-120:6245348 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=59=343059793
+2020-01-03 20:51:32  [ pool-3-thread-122:6245556 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=60=406239349
+2020-01-03 20:51:32  [ pool-3-thread-119:6245558 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=59=102214458
+2020-01-03 20:51:32  [ pool-3-thread-121:6246010 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=60=122893786
+2020-01-03 20:51:33  [ pool-3-thread-118:6246988 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=58=132814656
+2020-01-03 20:51:34  [ pool-3-thread-123:6247294 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=58=447151611
+2020-01-03 20:51:34  [ pool-3-thread-118:6247295 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:34  [ pool-3-thread-118:6247296 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=58 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:34  [ pool-3-thread-124:6247319 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=61
+2020-01-03 20:51:34  [ pool-3-thread-119:6247561 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:34  [ pool-3-thread-119:6247562 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=59 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:34  [ pool-3-thread-126:6247565 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=62
+2020-01-03 20:51:34  [ pool-3-thread-124:6247606 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=61=125042055
+2020-01-03 20:51:34  [ pool-3-thread-125:6247654 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=61=393177328
+2020-01-03 20:51:34  [ pool-3-thread-121:6247841 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:34  [ pool-3-thread-121:6247841 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=60 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:34  [ pool-3-thread-127:6247842 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=63
+2020-01-03 20:51:34  [ pool-3-thread-124:6248024 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:34  [ pool-3-thread-124:6248025 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=61 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:34  [ pool-3-thread-129:6248027 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=64
+2020-01-03 20:51:35  [ pool-3-thread-128:6248117 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=63=24434171
+2020-01-03 20:51:35  [ pool-3-thread-130:6248354 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=64=370404467
+2020-01-03 20:51:35  [ pool-3-thread-129:6248927 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=64=121766063
+2020-01-03 20:51:36  [ pool-3-thread-127:6249405 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=63=18796550
+2020-01-03 20:51:36  [ pool-3-thread-131:6249667 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=62=376588586
+2020-01-03 20:51:36  [ pool-3-thread-126:6249880 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=62=110423438
+2020-01-03 20:51:36  [ pool-3-thread-126:6249882 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:36  [ pool-3-thread-126:6249883 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=62 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:36  [ pool-3-thread-132:6249885 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=65
+2020-01-03 20:51:37  [ pool-3-thread-127:6250170 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:37  [ pool-3-thread-127:6250171 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=63 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:37  [ pool-3-thread-133:6250171 ] - [ INFO ]  开始下载 : http://www.bilibili.com/video/av71770380?p=14
+2020-01-03 20:51:37  [ pool-3-thread-129:6250373 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:37  [ pool-3-thread-129:6250382 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=64 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:37  [ pool-3-thread-134:6250387 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=4
+2020-01-03 20:51:37  [ pool-3-thread-134:6250610 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=4=254880344
+2020-01-03 20:51:37  [ pool-3-thread-133:6250889 ] - [ INFO ]  http://www.bilibili.com/video/av71770380?p=14=46999750
+2020-01-03 20:51:37  [ pool-3-thread-137:6250907 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=65=450687125
+2020-01-03 20:51:38  [ pool-3-thread-135:6251054 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=4=1296028830
+2020-01-03 20:51:38  [ pool-3-thread-136:6251171 ] - [ INFO ]  http://www.bilibili.com/video/av71770380?p=14=213057465
+2020-01-03 20:51:38  [ pool-3-thread-132:6251300 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=65=131425481
+2020-01-03 20:51:38  [ pool-3-thread-132:6251302 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:38  [ pool-3-thread-132:6251302 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=65 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:38  [ pool-3-thread-138:6251303 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=4
+2020-01-03 20:51:38  [ pool-3-thread-133:6251757 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:38  [ pool-3-thread-133:6251758 ] - [ INFO ]  下载失败 : http://www.bilibili.com/video/av71770380?p=14 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:38  [ pool-3-thread-138:6251856 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=4=254880344
+2020-01-03 20:51:38  [ pool-3-thread-139:6251856 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=4=1296028830
+2020-01-03 20:51:42  [ pool-3-thread-22:6255450 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$3(BilibiliPageDownload.java:83)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:42  [ pool-3-thread-22:6255450 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=10 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:43  [ pool-3-thread-138:6256272 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$null$1(BilibiliPageDownload.java:73)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:43  [ pool-3-thread-134:6256272 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:114)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$null$1(BilibiliPageDownload.java:73)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:178)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:55)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:105)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$8(NewVideoBeanDownloader.java:137)
+	... 9 more
+2020-01-03 20:51:43  [ pool-3-thread-134:6256273 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=4 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:51:43  [ pool-3-thread-138:6256273 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=4 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 20:52:25  [ pool-3-thread-17:6298474 ] - [ INFO ]  下载成功 : https://www.bilibili.com/video/av70384013?p=8
+2020-01-03 20:56:35  [ pool-3-thread-3:0 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=1
+2020-01-03 20:56:35  [ pool-3-thread-7:3 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=5
+2020-01-03 20:56:35  [ pool-3-thread-6:2 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=4
+2020-01-03 20:56:35  [ pool-3-thread-4:2 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=2
+2020-01-03 20:56:35  [ pool-3-thread-5:1 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=3
+2020-01-03 20:56:35  [ pool-3-thread-6:418 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=4=254880344
+2020-01-03 20:56:35  [ pool-3-thread-5:460 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=3=111602075
+2020-01-03 20:56:35  [ pool-3-thread-10:468 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=3=365984502
+2020-01-03 20:56:35  [ pool-3-thread-11:476 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=4=1296028830
+2020-01-03 20:56:35  [ pool-3-thread-12:497 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=1=306209817
+2020-01-03 20:56:35  [ pool-3-thread-9:501 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=2=377576630
+2020-01-03 20:56:35  [ pool-3-thread-4:571 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=2=141386103
+2020-01-03 20:56:35  [ pool-3-thread-7:602 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=5=115015047
+2020-01-03 20:56:35  [ pool-3-thread-3:626 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=1=116088854
+2020-01-03 20:56:35  [ pool-3-thread-8:713 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=5=315329109
+2020-01-03 21:24:56  [ pool-3-thread-5:1701678 ] - [ INFO ]  下载成功 : https://www.bilibili.com/video/av70384013?p=3
+2020-01-03 21:24:56  [ pool-3-thread-13:1701696 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=6
+2020-01-03 21:24:57  [ pool-3-thread-13:1702163 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=6=209185475
+2020-01-03 21:24:58  [ pool-3-thread-14:1703112 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=6=775548611
+2020-01-03 21:30:40  [ pool-3-thread-3:2045787 ] - [ INFO ]  下载成功 : https://www.bilibili.com/video/av70384013?p=1
+2020-01-03 21:30:40  [ pool-3-thread-15:2045788 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=7
+2020-01-03 21:30:41  [ pool-3-thread-15:2046648 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=7=104349664
+2020-01-03 21:30:42  [ pool-3-thread-16:2047054 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=7=389831642
+2020-01-03 21:41:21  [ pool-3-thread-4:2686232 ] - [ INFO ]  下载成功 : https://www.bilibili.com/video/av70384013?p=2
+2020-01-03 21:41:21  [ pool-3-thread-17:2686269 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=8
+2020-01-03 21:41:22  [ pool-3-thread-17:2687048 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=8=168769532
+2020-01-03 21:41:22  [ pool-3-thread-18:2687584 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=8=528917905
+2020-01-03 21:44:04  [ pool-3-thread-7:2849481 ] - [ INFO ]  下载成功 : https://www.bilibili.com/video/av70384013?p=5
+2020-01-03 21:44:04  [ pool-3-thread-19:2849499 ] - [ INFO ]  开始下载 : https://www.bilibili.com/video/av70384013?p=9
+2020-01-03 21:44:05  [ pool-3-thread-19:2849847 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=9=102847551
+2020-01-03 21:44:05  [ pool-3-thread-20:2850305 ] - [ INFO ]  https://www.bilibili.com/video/av70384013?p=9=270398521
+2020-01-03 21:51:01  [ pool-3-thread-17:3266522 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:121)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$5(BilibiliPageDownload.java:90)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$7(NewVideoBeanDownloader.java:180)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:56)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:112)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$7(NewVideoBeanDownloader.java:136)
+	... 9 more
+2020-01-03 21:51:01  [ pool-3-thread-17:3266530 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=8 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 21:51:01  [ pool-3-thread-19:3266524 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:121)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$5(BilibiliPageDownload.java:90)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$7(NewVideoBeanDownloader.java:180)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:56)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:112)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$7(NewVideoBeanDownloader.java:136)
+	... 9 more
+2020-01-03 21:51:01  [ pool-3-thread-19:3266532 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=9 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 21:51:01  [ pool-3-thread-13:3266540 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:121)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$5(BilibiliPageDownload.java:90)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$7(NewVideoBeanDownloader.java:180)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:56)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:112)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$7(NewVideoBeanDownloader.java:136)
+	... 9 more
+2020-01-03 21:51:01  [ pool-3-thread-13:3266542 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=6 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 21:51:01  [ pool-3-thread-6:3266551 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:121)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$5(BilibiliPageDownload.java:90)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$7(NewVideoBeanDownloader.java:180)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:56)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:112)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$7(NewVideoBeanDownloader.java:136)
+	... 9 more
+2020-01-03 21:51:01  [ pool-3-thread-6:3266551 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=4 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+2020-01-03 21:51:01  [ pool-3-thread-15:3266630 ] - [ INFO ]  下载失败
+java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:121)
+	at liusheng.download.bilibili.BilibiliPageDownload.lambda$download$5(BilibiliPageDownload.java:90)
+	at liusheng.downloadCore.executor.LimitRunnable.doRunnable(LimitRunnable.java:37)
+	at liusheng.downloadCore.executor.LimitRunnable.run(LimitRunnable.java:30)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$7(NewVideoBeanDownloader.java:180)
+	at java.util.Optional.ifPresent(Optional.java:159)
+	at liusheng.download.bilibili.NewVideoBeanDownloader.download(NewVideoBeanDownloader.java:56)
+	at liusheng.download.bilibili.BilibiliPageDownload.getVieoBeanAndDownload(BilibiliPageDownload.java:112)
+	... 6 more
+Caused by: java.lang.RuntimeException
+	at liusheng.download.bilibili.NewVideoBeanDownloader.lambda$download$7(NewVideoBeanDownloader.java:136)
+	... 9 more
+2020-01-03 21:51:01  [ pool-3-thread-15:3266631 ] - [ INFO ]  下载失败 : https://www.bilibili.com/video/av70384013?p=7 Exception : java.lang.RuntimeException: java.lang.RuntimeException: java.lang.RuntimeException

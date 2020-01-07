@@ -3,8 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/downloadBilibili_jar</output-path>
     <root id="archive" name="downloadBilibili.jar">
       <element id="module-output" name="downloadBilibili" />
-      <element id="module-output" name="downloadCore" />
-      <element id="module-output" name="downloadInterface" />
     </root>
   </artifact>
 </component>

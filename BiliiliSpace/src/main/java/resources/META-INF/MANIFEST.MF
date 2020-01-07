@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Main-Class: 
+Class-Path: commons-exec-1.3.jar j2objc-annotations-1.1.jar okhttp-3.11.
+ 0.jar selenium-api-3.141.59.jar jsr305-1.3.9.jar hutool-all-4.6.5.jar s
+ elenium-remote-driver-3.141.59.jar byte-buddy-1.8.15.jar gson-2.8.5.jar
+  guava-25.0-jre.jar jfoenix-8.0.8.jar selenium-ie-driver-3.141.59.jar j
+ soup-1.12.1.jar checker-compat-qual-2.0.0.jar animal-sniffer-annotation
+ s-1.14.jar log4j-1.2.17.jar error_prone_annotations-2.1.3.jar okio-1.14
+ .0.jar
+

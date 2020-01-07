@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import liusheng.downloadCore.executor.FailListExecutorService;
+import liusheng.downloadCore.executor.ListExecutorService;
 import liusheng.downloadCore.util.BindUtils;
 
 public class DefaultMediaPlayerViewVBox extends VBox {
@@ -65,7 +65,7 @@ public class DefaultMediaPlayerViewVBox extends VBox {
         //BindUtils.bind(mediaView.fitHeightProperty(),mainPane.heightProperty());
         BindUtils.bind(mediaView.fitHeightProperty(), heightProperty().subtract(50));
 
-        FailListExecutorService.commonExecutorServicehelp().execute(() -> {
+        ListExecutorService.commonExecutorServicehelp().execute(() -> {
             MediaPlayer mediaPlayer = new MediaPlayer(new Media(url));
 
             Platform.runLater(() -> {

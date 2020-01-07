@@ -4,77 +4,78 @@ import com.google.gson.Gson;
 import com.jfoenix.controls.JFXListView;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
+import liusheng.downloadCore.AbstractDownloadAction;
 import liusheng.downloadCore.entity.DownloadItemPaneEntity;
-import liusheng.downloadCore.executor.FailListExecutorService;
-import liusheng.downloadCore.executor.FailTask;
 import liusheng.downloadCore.pane.DefaultDownloaderController;
 import liusheng.downloadCore.pane.DownloadItemPane;
 import liusheng.downloadCore.pane.DownloadingPaneContainer;
 import liusheng.downloadCore.util.ConnectionUtils;
 import liusheng.downloadCore.util.StringUtils;
+import liusheng.downloadInterface.DownloaderController;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class KugouDownloadAction implements EventHandler<ActionEvent> {
-    private final String href;
-    private final DownloadingPaneContainer downloadingPaneContainer;
+public class
+KugouDownloadAction extends AbstractDownloadAction {
     private final Gson gson = new Gson();
 
     public KugouDownloadAction(String href, DownloadingPaneContainer downloadingPaneContainer) {
+        super(href, downloadingPaneContainer);
 
-        this.href = href;
-        this.downloadingPaneContainer = downloadingPaneContainer;
     }
 
+
     @Override
-    public void handle(ActionEvent event) {
-        FailListExecutorService.commonExecutorServicehelp().execute(new FailTask(() -> {
+    protected void asynHandle(ActionEvent event) {
+        downloadKugouMp3();
+    }
 
-            try {
-                JFXListView<DownloadItemPaneEntity> listView = downloadingPaneContainer.getListView();
-                String body = ConnectionUtils.getConnection(href).execute().body();
+    private void downloadKugouMp3() {
+        try {
+            JFXListView<DownloadItemPaneEntity> listView = downloadingPaneContainer.getListView();
+            String body = ConnectionUtils.getConnection(href).execute().body();
 
-                SongEntity songEntity = gson.fromJson(body, SongEntity.class);
-                DownloadItemPane downloadItemPane = new DownloadItemPane(new DefaultDownloaderController());
-                DownloadItemPaneEntity e1 = new DownloadItemPaneEntity(-1, downloadItemPane);
-                e1.setAbstractVideoBean(songEntity);
-
-                downloadItemPane.setEntity(e1);
-                downloadItemPane.setEntity(e1);
-                downloadItemPane.setListView(listView);
-
-                if (StringUtils.isEmpty(songEntity.getData().getPlay_url())) {
+            SongEntity songEntity = gson.fromJson(body, SongEntity.class);
 
 
-                    Platform.runLater(() -> {
-                        new Alert(Alert.AlertType.INFORMATION, "无法获取下载的url,请换一首").showAndWait();
-                    });
+            DownloadItemPane downloadItemPane = new DownloadItemPane(new DefaultDownloaderController());
+            DownloadItemPaneEntity e1 = new DownloadItemPaneEntity(-1, downloadItemPane);
+            e1.setAbstractDataBean(songEntity);
 
-                    return;
-                }
+            downloadItemPane.setEntity(e1);
+            downloadItemPane.setListView(listView);
+
+            if (StringUtils.isEmpty(songEntity.getData().getPlay_url())) {
 
                 Platform.runLater(() -> {
-                    listView.getItems().add(e1);
+                    new Alert(Alert.AlertType.INFORMATION, "无法获取下载的url,请换一首").showAndWait();
                 });
 
-                songEntity.setPane(downloadItemPane);
-                songEntity.setName(StringUtils.fileNameHandle(songEntity.getData().getAlbum_name()));
-                songEntity.setDirFile(new File("mp3"));
-                songEntity.setDownloadPane(downloadingPaneContainer.getDownloadPane());
-                songEntity.setRefererUrl(href);
-                songEntity.setSize(new AtomicLong());
-                songEntity.setAllSize(new AtomicLong());
-                songEntity.setQuality(-1);
-
-
-                new KugouMp3Downloader().download(songEntity);
-            } catch (IOException e) {
-                e.printStackTrace();
+                return;
             }
-        }));
+
+
+            Platform.runLater(() -> {
+                listView.getItems().add(e1);
+            });
+
+            downloadItemPane.getLocal().setState(DownloaderController.EXECUTE);
+            songEntity.setPane(downloadItemPane);
+            songEntity.setName(StringUtils.fileNameHandle(songEntity.getData().getAlbum_name()));
+            songEntity.setDirFile(new File("mp3"));
+            songEntity.setDownloadPane(downloadingPaneContainer.getDownloadPane());
+            songEntity.setRefererUrl(href);
+            songEntity.setSize(new AtomicLong());
+            songEntity.setAllSize(new AtomicLong());
+            songEntity.setQuality(-1);
+
+
+            new KugouMp3Downloader().download(songEntity);
+        } catch (IOException e) {
+            throw  new RuntimeException(e);
+        }
     }
 }

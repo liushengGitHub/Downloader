@@ -1,8 +1,0 @@
-2019-09-26 15:31:05  [ pool-2-thread-2:0 ] - [ INFO ]  com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
-2019-09-26 15:32:06  [ pool-2-thread-2:0 ] - [ INFO ]  com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
-2019-09-26 15:33:48  [ pool-2-thread-3:0 ] - [ INFO ]  com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 1 column 13487 path $.data.lists[9].Grp
-2019-09-26 16:00:40  [ pool-2-thread-16:0 ] - [ INFO ]  com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 51 path $.data.lists
-2019-09-26 16:02:19  [ pool-2-thread-15:0 ] - [ INFO ]  com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 51 path $.data.lists
-2019-09-26 16:05:16  [ pool-2-thread-15:0 ] - [ INFO ]  com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 51 path $.data.lists
-2019-09-26 20:36:51  [ pool-2-thread-13:0 ] - [ INFO ]  com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT at line 1 column 51 path $.data.lists
-2019-09-26 22:07:54  [ pool-3-thread-2:0 ] - [ INFO ]  java.lang.IllegalStateException: Not on FX application thread; currentThread = pool-3-thread-2
