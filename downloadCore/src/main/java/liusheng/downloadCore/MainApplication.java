@@ -36,6 +36,7 @@ import liusheng.downloadInterface.PagePluginHolder;
 import liusheng.downloadInterface.SearchPlugin;
 import liusheng.downloadInterface.SearchPluginHolder;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -45,7 +46,7 @@ import java.util.stream.Collectors;
  * 用户名: LiuSheng
  */
 
-public class MainApplication  extends Application {
+public class MainApplication extends Application {
 
     private final OptionsLoader loader = new DefaultOptionsLoader();
 
@@ -94,13 +95,13 @@ public class MainApplication  extends Application {
 
         main.getChildren().addAll(menuBar, select);
 
-        if ( Objects.nonNull(downloadPane)) {
-            if (Objects.nonNull(searchPane) ) {
+        if (Objects.nonNull(downloadPane)) {
+            if (Objects.nonNull(searchPane)) {
                 // 加载Search 面板的插件
                 initSearchPagePlugin(searchPane, downloadPane, scene);
                 main.getChildren().add(searchPane);
             }
-            if (Objects.nonNull(pagePane)){
+            if (Objects.nonNull(pagePane)) {
                 // 加载Page 面板的插件
                 initPagePagePlugin(pagePane, downloadPane, scene);
             }
@@ -228,24 +229,41 @@ public class MainApplication  extends Application {
 
     private void onCloseListener(Stage primaryStage) {
         primaryStage.setOnCloseRequest(e -> {
-            ListExecutorService.commonExecutorServicehelp().execute(() -> {
-              /*  Path path1 = Paths.get("download/unDownloadUrls");
-                Path path2 = Paths.get("download/DownloadedUrls");
-                try {
-                    synchronized (DownloadList.downloadList()) {
-                        Files.write(path1, DownloadList.downloadList().getUnDownloadList());
-                        Files.write(path2, DownloadList.downloadList().getDownloadedList());
-                    }
-                    //关闭线程池
-                    FailListExecutorService.commonExecutorService().shutdownNow();
-                    FailListExecutorService.commonExecutorServicehelp().shutdownNow();
-
-                } catch (IOException ex) {
-
-                }*/
-                System.exit(1);
-            });
+            Platform.setImplicitExit(false);
+            SystemTray systemTray = SystemTray.getSystemTray();
+            try {
+                systemTray.add(getTrayIcon(primaryStage,systemTray));
+            } catch (AWTException ex) {
+                Platform.exit();
+            }
         });
+    }
+
+    private TrayIcon getTrayIcon(Stage primaryStage, SystemTray systemTray) {
+
+        PopupMenu popup = new PopupMenu();
+
+        java.awt.MenuItem show = new java.awt.MenuItem("show");
+        java.awt.MenuItem exit = new java.awt.MenuItem("exit");
+
+        popup.add(show);
+        popup.add(exit);
+        TrayIcon trayIcon = new TrayIcon(Toolkit.getDefaultToolkit().getImage(
+                ClassLoader.getSystemClassLoader().getResource("icon/icon1.jpg")
+        ), "蝶蝶", popup);
+
+
+        show.addActionListener((e)->{
+            Platform.runLater(()->{
+                primaryStage.show();
+            });
+            systemTray.remove(trayIcon);
+        });
+        exit.addActionListener((e)->{
+            systemTray.remove(trayIcon);
+            Platform.exit();
+        });
+        return trayIcon;
     }
 
 

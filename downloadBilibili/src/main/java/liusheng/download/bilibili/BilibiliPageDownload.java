@@ -21,6 +21,7 @@ import liusheng.downloadCore.pane.DownloadingPaneContainer;
 import liusheng.downloadCore.util.AbstractBeanUtil;
 import liusheng.downloadCore.util.StatusUtil;
 import liusheng.downloadInterface.DownloaderController;
+import liusheng.downloadInterface.SystemConfigLoader;
 import org.apache.log4j.Logger;
 
 import java.io.File;
@@ -66,14 +67,11 @@ public class BilibiliPageDownload implements SubPageDownload {
         Platform.runLater(() -> {
             listView.getItems().add(e1);
         });
-        File subDirFile = new File(PathConstants.VIDEO, subDir);
+        File subDirFile = new File(SystemConfigLoader.getPropertyOrDefault("video","video"), subDir);
         downloadItemPane.getRetry().setOnAction(e -> {
             int state = downloadItemPane.getLocal().getState();
             if (state == DownloaderController.EXCEPTION) {
-                Platform.runLater(() -> {
-                    downloadItemPane.getStateLabel().setText("正在等待");
-                    downloadItemPane.getLocal().setState(DownloaderController.EXECUTE);
-                });
+                StatusUtil.retry(null,downloadItemPane);
                 // 放入到任务队列
                 getTaskQueue().add(new LimitRunnable(runnableInfo, () -> {
                     StatusUtil.download(downloadItemPane);

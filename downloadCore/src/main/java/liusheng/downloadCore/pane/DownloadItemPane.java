@@ -5,12 +5,16 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXProgressBar;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 import liusheng.downloadCore.entity.DownloadItemPaneEntity;
 import liusheng.downloadCore.util.BindUtils;
+import liusheng.downloadCore.util.ProcessBuilderUtils;
 import liusheng.downloadInterface.DownloaderController;
+
+import java.io.File;
 
 public class DownloadItemPane extends VBox {
 
@@ -138,6 +142,20 @@ public class DownloadItemPane extends VBox {
             local.pause();
         });
 
+        pathLabel.setOnMouseClicked(e -> {
+            if (e.getClickCount() == 2) {
+                String path = pathLabel.getText();
+                File absoluteFile = new File(path).getAbsoluteFile();
+                String absoluteFileString = absoluteFile.toString();
+                try {
+                    absoluteFileString = absoluteFile.getParent();
+                    ProcessBuilderUtils.executeAndDiscardOuput("explorer", "/e,/select,", "\"" + absoluteFileString + "\"");
+                } catch (Exception ex) {
+                    new Alert(Alert.AlertType.ERROR, "打开文件" + absoluteFileString + "失败").show();
+                }
+            }
+        });
+
         top.setAlignment(Pos.CENTER_LEFT);
         BindUtils.bind(top.prefWidthProperty(), this.widthProperty());
         BindUtils.bind(top.prefHeightProperty(), this.heightProperty().multiply(0.3));
@@ -149,8 +167,8 @@ public class DownloadItemPane extends VBox {
         BindUtils.bind(middle.prefWidthProperty(), this.widthProperty());
         BindUtils.bind(middle.prefHeightProperty(), this.heightProperty().multiply(0.4));
         BindUtils.bind(pathLabel.prefHeightProperty(), middle.heightProperty());
-        BindUtils.bind(pathLabel.prefWidthProperty(), middle.widthProperty().multiply(0.7));
-        BindUtils.bind(stateLabel.prefWidthProperty(), middle.widthProperty().multiply(0.3));
+        BindUtils.bind(pathLabel.prefWidthProperty(), middle.widthProperty().multiply(0.8));
+        BindUtils.bind(stateLabel.prefWidthProperty(), middle.widthProperty().multiply(0.2));
         BindUtils.bind(stateLabel.prefHeightProperty(), middle.heightProperty());
         BindUtils.bind(progressValue.prefHeightProperty(), top.heightProperty());
         BindUtils.bind(progressValue.prefWidthProperty(), top.prefWidthProperty().multiply(0.2));

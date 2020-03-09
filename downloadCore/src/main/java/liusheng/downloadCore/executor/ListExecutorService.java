@@ -24,12 +24,11 @@ public class ListExecutorService extends ThreadPoolExecutor {
 
 
     private static ListExecutorService listExecutorService = new ListExecutorService(
-            SystemCodeConfig.mainThreadNumber());
+            SystemCodeConfig.mainThreadNumber(),"main");
 
 
     private static ListExecutorService listExecutorServiceHelp =
-            new ListExecutorService(SystemCodeConfig.helpThreadNumber());
-
+            new ListExecutorService(SystemCodeConfig.helpThreadNumber(),"help");
 
 
     public static synchronized ListExecutorService commonExecutorService() {
@@ -55,7 +54,7 @@ public class ListExecutorService extends ThreadPoolExecutor {
 
                         if (Objects.nonNull(runnable)) {
                             // 任务加1
-                         currentTaskNumber.getAndIncrement();
+                            currentTaskNumber.getAndIncrement();
                             listExecutorServiceHelp.execute(runnable);
                         }
                     }
@@ -66,9 +65,27 @@ public class ListExecutorService extends ThreadPoolExecutor {
         });
     }
 
+    static class DefaultThreadFactory implements ThreadFactory {
 
-    public ListExecutorService(int fixedSize) {
-        this(fixedSize, Executors.defaultThreadFactory());
+        private final AtomicInteger index = new AtomicInteger();
+        private final String name;
+
+        public DefaultThreadFactory(String name) {
+
+            this.name = name;
+        }
+
+        @Override
+        public Thread newThread(Runnable r) {
+            Thread thread = new Thread(r);
+            thread.setName(name + "_" + index.getAndIncrement());
+            thread.setDaemon(true);
+            return thread;
+        }
+    }
+
+    public ListExecutorService(int fixedSize,String name) {
+        this(fixedSize, new DefaultThreadFactory(name));
     }
 
     public ListExecutorService(int fixedSize, ThreadFactory threadFactory) {
@@ -81,13 +98,10 @@ public class ListExecutorService extends ThreadPoolExecutor {
         this(Runtime.getRuntime().availableProcessors() * 2, Executors.defaultThreadFactory());
     }
 
-    public ListExecutorService() {
-        this(Runtime.getRuntime().availableProcessors() * 2);
+    public ListExecutorService(String name) {
+        this(Runtime.getRuntime().availableProcessors() * 2,name);
     }
 
-    public ListExecutorService(Queue<FailTask> queue) {
-        this(Runtime.getRuntime().availableProcessors() * 2);
-    }
 
     @Override
     protected void beforeExecute(Thread t, Runnable r) {

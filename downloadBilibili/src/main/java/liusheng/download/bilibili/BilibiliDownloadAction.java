@@ -59,7 +59,7 @@ public class BilibiliDownloadAction implements EventHandler<ActionEvent> {
                         });
 
                     } catch (IOException e) {
-                        throw new RuntimeException();
+                        throw new RuntimeException(e);
                     }
 
                 }));

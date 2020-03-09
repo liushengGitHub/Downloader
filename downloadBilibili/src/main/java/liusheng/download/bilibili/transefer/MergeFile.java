@@ -13,15 +13,15 @@ import java.util.concurrent.Semaphore;
 
 public class MergeFile implements Runnable {
     private final List<String> list;
+    private String txtFile;
     private final String name;
-    private final String dir;
     private final Semaphore semaphore;
     private final Logger logger = Logger.getLogger(MergeFile.class);
 
-    public MergeFile(List<String> list, String name, String dir, Semaphore semaphore) {
+    public MergeFile(List<String> list,String txtFile, String fileName, Semaphore semaphore) {
         this.list = list;
-        this.name = name;
-        this.dir = dir;
+        this.txtFile = txtFile;
+        this.name = fileName;
         this.semaphore = semaphore;
     }
 
@@ -33,7 +33,7 @@ public class MergeFile implements Runnable {
             //ffmpeg -f concat -i mylist.txt -c copy output.flv
             // 有点批问题
             //./ffmpeg.exe -f concat -safe 0 -i ./fileToMerge.txt -c copy -y ./out.mp4
-            ProcessBuilderUtils.executeAndDiscardOuput("ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", dir + File.separator + name + ".txt", "-c", "copy", dir + File.separator + name + ".mp4");
+            ProcessBuilderUtils.executeAndDiscardOuput("ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", "\"" +txtFile +  "\"", "-c", "copy", "\""+ name + "\"");
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
@@ -55,7 +55,7 @@ public class MergeFile implements Runnable {
     }
 
     private void writeAccord() throws IOException {
-        BufferedWriter bufferedWriter = Files.newBufferedWriter(Paths.get(dir, name + ".txt"));
+        BufferedWriter bufferedWriter = Files.newBufferedWriter(Paths.get(txtFile));
         try {
             list.forEach(n -> {
                 try {

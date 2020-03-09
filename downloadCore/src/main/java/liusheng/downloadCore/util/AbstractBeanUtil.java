@@ -18,7 +18,8 @@ public class AbstractBeanUtil {
     private AbstractBeanUtil(){}
 
     public static void setAbstractProperty(DownloadingPaneContainer downloadingPaneContainer, File  dirFile, JFXListView<DownloadItemPaneEntity> listView1,
-                                           AbstractDataBean abstractDataBean, String name, String referUrl, DownloadItemPane downloadItemPane, int quality, DownloadItemPaneEntity e1) {
+                                           AbstractDataBean abstractDataBean, String name, String referUrl, DownloadItemPane downloadItemPane, int quality,
+                                           DownloadItemPaneEntity e1) {
         abstractDataBean.setName(StringUtils.fileNameHandle(name));
         abstractDataBean.setDirFile(dirFile);
         abstractDataBean.setRefererUrl(referUrl);

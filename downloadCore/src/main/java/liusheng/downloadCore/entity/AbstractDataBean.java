@@ -5,6 +5,7 @@ import liusheng.downloadCore.RunnableInfo;
 import liusheng.downloadCore.pane.DownloadPane;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -15,11 +16,27 @@ public abstract class AbstractDataBean implements RunnableInfo {
     transient String refererUrl;
     // 文件名
     transient String name;
+
+    private transient Path filePath;
+
+
+
     private transient int quality;
     private transient AtomicLong size;
     private transient AtomicLong allSize;
     private transient AtomicInteger partSize = new AtomicInteger();
 
+    public Path getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(Path filePath) {
+        this.filePath = filePath;
+    }
+
+    public void setPartSize(AtomicInteger partSize) {
+        this.partSize = partSize;
+    }
     public DownloadPane getDownloadPane() {
         return downloadPane;
     }

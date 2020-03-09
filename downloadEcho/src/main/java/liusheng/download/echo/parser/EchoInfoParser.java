@@ -13,10 +13,10 @@ import java.io.IOException;
  * 用户名: LiuSheng
  */
 
-public class EchoInfoParser implements Parser<String, Object> {
+public class EchoInfoParser implements Parser<String, EchoEntity> {
     private final Gson gson = new Gson();
 
-    public Object parse(String s) throws IOException {
+    public EchoEntity parse(String s) throws IOException {
         String body = ConnectionUtils.getConnection(s)
                 .execute().body();
         return gson.fromJson(body, EchoEntity.class);

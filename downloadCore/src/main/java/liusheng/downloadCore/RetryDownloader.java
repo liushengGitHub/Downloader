@@ -74,20 +74,22 @@ public class RetryDownloader implements Downloader<DownloadEntity> {
     private Error retryDownload(int retry, String url, Path filePath, String refererUrl) throws IOException {
 
         Error error = null;
-        for (int i = 0; i < retry; i++) {
-            error = downloadFile(refererUrl, url, filePath);
-            if (Objects.isNull(error.e)) {
-                return error;
+        try(OutputStream outputStream = Files.newOutputStream(filePath)) {
+            for (int i = 0; i < retry; i++) {
+                error = downloadFile(refererUrl, url, outputStream);
+                if (Objects.isNull(error.e) || error.e instanceof InterruptedException) {
+                    return error;
+                }
+                // 上次的位置开始下载
+                start = error.sum;
+                parts.getAndDecrement();
             }
-            // 上次的位置开始下载
-            start = error.sum;
-            parts.getAndDecrement();
         }
         return error;
 
     }
 
-    private Error downloadFile(String url, String videoUrl, Path path) throws IOException {
+    private Error downloadFile(String url, String videoUrl, OutputStream outputStream) throws IOException {
         HttpURLConnection connection = ConnectionUtils.getNativeConnection(videoUrl);
 
         connection.setRequestMethod("GET");
@@ -115,7 +117,7 @@ public class RetryDownloader implements Downloader<DownloadEntity> {
             this.length = len;
             logger.info(url + "=" + len);
         }
-        try (OutputStream outputStream = Files.newOutputStream(path)) {
+        try  {
 
             byte[] bytes = new byte[10240];
             while (sum < this.length) {
@@ -129,9 +131,8 @@ public class RetryDownloader implements Downloader<DownloadEntity> {
                     try {
                         TimeUnit.SECONDS.sleep(1);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
                         outputStream.close();
-                        Files.delete(path);
+                        return  new Error(sum,e);
                     }
                     continue;
                 }
@@ -160,7 +161,7 @@ public class RetryDownloader implements Downloader<DownloadEntity> {
                 }
 
                 outputStream.write(bytes, 0, length);
-                start += length;
+               /* start += length;*/
                 sum += length;
                 size.getAndAdd(length);
             }

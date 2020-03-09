@@ -20,10 +20,13 @@ import liusheng.downloadInterface.DownloaderController;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
+
+import static liusheng.downloadCore.util.DownloadPaneUtil.removeListItem;
 
 public class KugouMp3Downloader implements Downloader<SongEntity> {
     @Override
@@ -44,6 +47,7 @@ public class KugouMp3Downloader implements Downloader<SongEntity> {
         }
 
         Path filePath = dirPath.resolve(fileName + ".mp3");
+        abstractDataBean.setFilePath(filePath);
         // 下载视频文件
         Platform.runLater(() -> {
             itemPane.getPathLabel().setText(filePath.toString());
@@ -85,6 +89,7 @@ public class KugouMp3Downloader implements Downloader<SongEntity> {
 
     private void realDownload(SongEntity abstractVideoBean, Label stateLabel, DownloaderController itemPaneLocal, RetryDownloader retryDownloader, DownloadEntity downloadEntity) {
         try {
+
             Error error = retryDownloader.download(downloadEntity);
             if (Objects.nonNull(error) && Objects.nonNull(error.getE())) {
                 throw new RuntimeException(error.getE());
@@ -108,12 +113,5 @@ public class KugouMp3Downloader implements Downloader<SongEntity> {
         }
     }
 
-    private void removeListItem(AbstractDataBean newVideoBean) {
-        DownloadItemPane itemPane = (DownloadItemPane) newVideoBean.getPane();
-        JFXListView<DownloadItemPaneEntity> listView = itemPane.getListView();
-        ObservableList<DownloadItemPaneEntity> items = listView.getItems();
-        int i = items.indexOf(itemPane.getEntity());
-        newVideoBean.getDownloadPane().getDownloadedPane().getDownloadedPaneContainer().getListView().getItems().add(items.get(i));
-        items.remove(i);
-    }
+
 }

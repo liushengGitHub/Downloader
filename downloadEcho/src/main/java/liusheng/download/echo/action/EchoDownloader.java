@@ -25,6 +25,8 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
+import static liusheng.downloadCore.util.DownloadPaneUtil.removeListItem;
+
 /**
  * 年: 2019  月: 12 日: 27 小时: 20 分钟: 31
  * 用户名: LiuSheng
@@ -103,12 +105,5 @@ public class EchoDownloader implements Downloader<AbstractDataBean> {
         }
     }
 
-    private void removeListItem(AbstractDataBean newVideoBean) {
-        DownloadItemPane itemPane = (DownloadItemPane) newVideoBean.getPane();
-        JFXListView<DownloadItemPaneEntity> listView = itemPane.getListView();
-        ObservableList<DownloadItemPaneEntity> items = listView.getItems();
-        int i = items.indexOf(itemPane.getEntity());
-        newVideoBean.getDownloadPane().getDownloadedPane().getDownloadedPaneContainer().getListView().getItems().add(items.get(i));
-        items.remove(i);
-    }
+
 }

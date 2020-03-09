@@ -32,6 +32,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 import static liusheng.downloadCore.executor.ListExecutorService.getTaskQueue;
+import static liusheng.downloadCore.util.DownloadPaneUtil.removeListItem;
 
 public class ChapterDownloader implements Downloader<String> {
     private final String dir;
@@ -128,13 +129,6 @@ public class ChapterDownloader implements Downloader<String> {
                         filePath, dirPath, 3));
     }
 
-    private void removeListItem(AbstractDataBean newVideoBean) {
-        DownloadItemPane itemPane = (DownloadItemPane) newVideoBean.getPane();
-        JFXListView<DownloadItemPaneEntity> listView = itemPane.getListView();
-        ObservableList<DownloadItemPaneEntity> items = listView.getItems();
-        int i = items.indexOf(itemPane.getEntity());
-        newVideoBean.getDownloadPane().getDownloadedPane().getDownloadedPaneContainer().getListView().getItems().add(items.get(i));
-        items.remove(i);
-    }
+
 
 }

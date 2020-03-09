@@ -18,6 +18,7 @@ import liusheng.downloadCore.util.BindUtils;
 public class DefaultMediaPlayerViewVBox extends VBox {
 
     private final MediaView mediaView;
+    private  MediaPlayer mediaPlayer;
     private boolean flag = false;
 
     public MediaView getMediaView() {
@@ -65,47 +66,49 @@ public class DefaultMediaPlayerViewVBox extends VBox {
         //BindUtils.bind(mediaView.fitHeightProperty(),mainPane.heightProperty());
         BindUtils.bind(mediaView.fitHeightProperty(), heightProperty().subtract(50));
 
-        ListExecutorService.commonExecutorServicehelp().execute(() -> {
-            MediaPlayer mediaPlayer = new MediaPlayer(new Media(url));
 
-            Platform.runLater(() -> {
-                mediaView.setMediaPlayer(mediaPlayer);
-                mediaView.getMediaPlayer().volumeProperty().bind(volumn.valueProperty());
+        mediaPlayer = new MediaPlayer(new Media(url));
+        Platform.runLater(() -> {
+            mediaView.setMediaPlayer(mediaPlayer);
+            mediaView.getMediaPlayer().volumeProperty().bind(volumn.valueProperty());
 
-                player.setOnAction(e -> {
+            player.setOnAction(e -> {
 
-                    MediaPlayer.Status status = mediaPlayer.getStatus();
+                MediaPlayer.Status status = mediaPlayer.getStatus();
 
-                    if (status == MediaPlayer.Status.PAUSED || status == MediaPlayer.Status.READY) {
-                        mediaPlayer.play();
-                        player.setGraphic(new ImageView(pauseImage));
-                    } else if (status == MediaPlayer.Status.PLAYING) {
-                        mediaPlayer.pause();
-                        player.setGraphic(new ImageView(playImage));
-                    }
-
-                });
-
-                mediaPlayer.currentTimeProperty().addListener((a, b, c) -> {
-
-                    if (!flag) {
-                        progress.setValue(progress.getMax() * c.toMillis() / mediaPlayer.getMedia().getDuration().toMillis());
-                    } else {
-                        if (mediaPlayer.getCurrentTime().greaterThan(c)) {
-                            flag = false;
-                        }
-                    }
-                });
-
-
-                progress.setOnMouseClicked(e -> {
-                    flag = true;
-                    double v = progress.getValue() / progress.getMax();
-                    mediaPlayer.seek(mediaPlayer.getMedia().getDuration().multiply(v));
-                });
-
+                if (status == MediaPlayer.Status.PAUSED || status == MediaPlayer.Status.READY) {
+                    mediaPlayer.play();
+                    player.setGraphic(new ImageView(pauseImage));
+                } else if (status == MediaPlayer.Status.PLAYING) {
+                    mediaPlayer.pause();
+                    player.setGraphic(new ImageView(playImage));
+                }
 
             });
+            mediaPlayer.statusProperty().addListener((a, o, n) -> {
+                if (n == MediaPlayer.Status.READY) {
+                    player.fire();
+                }
+            });
+            mediaPlayer.currentTimeProperty().addListener((a, b, c) -> {
+
+                if (!flag) {
+                    progress.setValue(progress.getMax() * c.toMillis() / mediaPlayer.getMedia().getDuration().toMillis());
+                } else {
+                    if (mediaPlayer.getCurrentTime().greaterThan(c)) {
+                        flag = false;
+                    }
+                }
+            });
+
+
+            progress.setOnMouseClicked(e -> {
+                flag = true;
+                double v = progress.getValue() / progress.getMax();
+                mediaPlayer.seek(mediaPlayer.getMedia().getDuration().multiply(v));
+            });
+
+
         });
 
         controller.getChildren().addAll(player, progress, volumn);
@@ -115,5 +118,8 @@ public class DefaultMediaPlayerViewVBox extends VBox {
         setStyle("-fx-background-color: black");
         getChildren().addAll(mediaView, controller);
 
+    }
+    public  void close() {
+        mediaPlayer.dispose();
     }
 }

@@ -25,10 +25,12 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
+import static liusheng.downloadCore.util.DownloadPaneUtil.removeListItem;
+
 public class OldVideoBeanDownloader implements Downloader<OldVideoBean> {
     private final Logger logger = Logger.getLogger(NewVideoBeanDownloader.class);
     private final Semaphore semaphore;
-    private boolean merge;
+    private boolean merge = true;
 
     public OldVideoBeanDownloader(Semaphore semaphore) {
         this.semaphore = semaphore;
@@ -59,8 +61,6 @@ public class OldVideoBeanDownloader implements Downloader<OldVideoBean> {
                         oldVideoBean.setParts(durlBeans.size());
 
 
-
-
                         itemPaneLocal.setState(DownloaderController.EXECUTE);
 
                         if (!Files.exists(dirPath)) {
@@ -71,9 +71,12 @@ public class OldVideoBeanDownloader implements Downloader<OldVideoBean> {
                         // 非启动线抛出的异常,会捕获不到的
                         // 用于记录下载成功的数量
                         AtomicInteger successNumber = new AtomicInteger();
-
+                        Path finalFilePath = dirPath.resolve(name + ".flv");
+                        oldVideoBean.setFilePath(finalFilePath);
+                        //                        Path finalFilePath = dirPath.resolve(name + ".flv");
+                        Path finalTxtPath = dirPath.resolve(name + ".txt");
                         Platform.runLater(() -> {
-                            itemPane.getPathLabel().setText(dirPath.resolve(name + ".flv").toString());
+                            itemPane.getPathLabel().setText(finalFilePath.toString());
                         });
 
                         durlBeans.stream().forEach(durlBean -> {
@@ -83,8 +86,6 @@ public class OldVideoBeanDownloader implements Downloader<OldVideoBean> {
                             List<String> backup_url = durlBean.getBackup_url() == null ? Collections.emptyList() : (List<String>) durlBean.getBackup_url();
 
                             Path filePath = dirPath.resolve((b ? order + "_" : "") + name + ".flv");
-
-
 
 
                             // 加入合并的路径,失败的话就删除
@@ -109,7 +110,7 @@ public class OldVideoBeanDownloader implements Downloader<OldVideoBean> {
                                 // 下载成功
                                 if (Objects.isNull(error.getE())) {
                                     successNumber.getAndIncrement();
-                                }else {
+                                } else {
 
                                     itemPaneLocal.setState(DownloaderController.EXCEPTION);
                                 }
@@ -125,7 +126,7 @@ public class OldVideoBeanDownloader implements Downloader<OldVideoBean> {
                         });
 
                         if (successNumber.get() < oldVideoBean.getParts()) {
-                            throw  new RuntimeException("下载失败");
+                            throw new RuntimeException("下载失败");
                         }
                         // 下载成功
                         itemPaneLocal.setState(DownloaderController.FINISHED);
@@ -139,9 +140,10 @@ public class OldVideoBeanDownloader implements Downloader<OldVideoBean> {
                             try {
                                 //限流,防止OOM
                                 semaphore.acquire();
-                                new MergeFile(paths, name, dirPath.toString(), semaphore).run();
+                                new MergeFile(paths, finalTxtPath.toString(), finalFilePath.toString(), semaphore).run();
                             } catch (Exception e) {
-                               merge = false;
+                                logger.debug("合并失败",e);
+                                merge = false;
                             } finally {
                                 semaphore.release();
                             }
@@ -152,10 +154,11 @@ public class OldVideoBeanDownloader implements Downloader<OldVideoBean> {
                                 stateLabel.setText("合并成功");
                                 removeListItem(oldVideoBean);
                             });
-                        }else {
+                        } else {
                             Platform.runLater(() -> {
                                 stateLabel.setText("合并失败");
                             });
+                            throw  new RuntimeException();
                         }
 
                         itemPaneLocal.setState(DownloaderController.FINISHED);
@@ -164,8 +167,8 @@ public class OldVideoBeanDownloader implements Downloader<OldVideoBean> {
                         itemPaneLocal.setState(DownloaderController.EXCEPTION);
                         throw new RuntimeException(throwable);
                     } finally {
-                        if (!b || !merge){
-                            return ;
+                        if (!b || !merge) {
+                            return;
                         }
                         // 删除所有临时文件
                         int[] fails = new int[1];
@@ -196,14 +199,5 @@ public class OldVideoBeanDownloader implements Downloader<OldVideoBean> {
         return null;
     }
 
-    private void removeListItem(OldVideoBean oldVideoBean) {
-        DownloadItemPane itemPane = (DownloadItemPane) oldVideoBean.getPane();
-        JFXListView<DownloadItemPaneEntity> listView = itemPane.getListView();
-        ObservableList<DownloadItemPaneEntity> items = listView.getItems();
-        int i = items.indexOf(itemPane.getEntity());
-        if (i != -1) {
-            oldVideoBean.getDownloadPane().getDownloadedPane().getDownloadedPaneContainer().getListView().getItems().add(items.get(i));
-            items.remove(i);
-        }
-    }
+
 }

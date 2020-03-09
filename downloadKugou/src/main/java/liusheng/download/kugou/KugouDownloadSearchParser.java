@@ -15,12 +15,14 @@ import liusheng.downloadCore.AbstractDownloadAction;
 import liusheng.downloadCore.AbstractSearchPaneParser;
 import liusheng.downloadCore.executor.ListExecutorService;
 import liusheng.downloadCore.pane.*;
+import liusheng.downloadCore.player.CustomeMediaPlayer;
 import liusheng.downloadCore.util.ConnectionUtils;
 import liusheng.downloadCore.util.StringUtils;
 import liusheng.downloadInterface.Parser;
 import liusheng.downloadInterface.SearchItem;
 import liusheng.downloadInterface.SearchPageParser;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class KugouDownloadSearchParser extends AbstractSearchPaneParser {
@@ -56,109 +58,25 @@ public class KugouDownloadSearchParser extends AbstractSearchPaneParser {
         player.setSize(600, 480);
         player.setResizable(false);
         MusicPlayerPane playerPane = new MusicPlayerPane();
-        MediaView mediaView = playerPane.getMediaView();
         ListExecutorService.commonExecutorService()
-                .execute(() -> {
-                    String body = null;
+                .execute(()->{
+
                     try {
-                        body = ConnectionUtils.getConnection(item.getHref()).execute().body();
+                        String body  = ConnectionUtils.getConnection(item.getHref()).execute().body();
                         SongEntity songEntity = gson.fromJson(body, SongEntity.class);
                         String playUrl = songEntity.getData().getPlay_url();
-
-                        if (StringUtils.isEmpty(playUrl)) {
-                            throw new RuntimeException();
-                        }
-
-                        Media media = new Media(playUrl);
-                        MediaPlayer mediaPlayer = new MediaPlayer(media);
-                        Platform.runLater(() -> {
-                            player.setTitle(songEntity.getName());
-                            if (!player.isShowing()) {
-                                return;
-                            }
-                            int height = media.getHeight();
-                            int width = media.getWidth();
-                            if (width != 0 && height != 0) {
-                                if (width * 1.0 / height > 600.0 / 400) {
-                                    mediaView.setFitWidth(600);
-                                    mediaView.setFitHeight(400 * (600.0 / width));
-                                } else {
-                                    mediaView.setFitHeight(400);
-                                    mediaView.setFitWidth(600 * (400.0 / height));
-                                }
-                            } else {
-                                mediaView.setFitWidth(0);
-                                mediaView.setFitHeight(0);
-                                playerPane.getMain().getChildren().add(new Label("播放的无画面"));
-                            }
-                            JFXButton playButton = ProcessPlayButton(playerPane, mediaPlayer);
-
-                            processPlaySolider(playerPane, mediaPlayer);
-
-                            processVolumnSolidaer(playerPane, mediaPlayer);
-                            mediaView.setMediaPlayer(mediaPlayer);
-
-                            playButton.fire();
-                        });
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                        Platform.runLater(() -> {
-                            new Alert(Alert.AlertType.INFORMATION, "播放失败").showAndWait();
-                        });
+                        player.setTitle(songEntity.getName());
+                        CustomeMediaPlayer customeMediaPlayer = new CustomeMediaPlayer(playUrl,playerPane,player);
+                        customeMediaPlayer.start();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        player.close();
                     }
+
                 });
-        player.setOnCloseRequest((e1) -> {
-            if (Objects.nonNull(mediaView.getMediaPlayer())) {
-                mediaView.getMediaPlayer().stop();
-            }
-        });
         player.setContent(playerPane);
         player.show();
     }
 
-    private void processVolumnSolidaer(MusicPlayerPane playerPane, MediaPlayer mediaPlayer) {
-        mediaPlayer.volumeProperty().bind(playerPane.getVolumnSolider().valueProperty());
-    }
 
-    private Duration seekTime = null;
-
-    private void processPlaySolider(MusicPlayerPane playerPane, MediaPlayer mediaPlayer) {
-        JFXSlider playSolider = playerPane.getPlaySolider();
-        mediaPlayer.currentTimeProperty().addListener((a, o, n) -> {
-            //?
-            if (seekTime != null && !seekTime.equals(n)) {
-                return;
-            }else {
-                seekTime = null;
-            }
-            playSolider.setValue(n.toMillis() / mediaPlayer.getTotalDuration().toMillis() * 100);
-        });
-        playSolider.valueProperty().addListener((a, o, n) -> {
-            if (playSolider.isValueChanging()) {
-                seekTime = Duration.millis(mediaPlayer.getTotalDuration().toMillis() * n.doubleValue() / 100);
-                mediaPlayer.seek(seekTime);
-            }
-        });
-        playSolider.setOnMouseClicked((e)->{
-            seekTime = Duration.millis(mediaPlayer.getTotalDuration().toMillis() * playSolider.getValue() / 100);
-            mediaPlayer.seek(seekTime);
-        });
-    }
-
-    private JFXButton ProcessPlayButton(MusicPlayerPane playerPane, MediaPlayer mediaPlayer) {
-        JFXButton playButton = playerPane.getPlayButton();
-
-        playButton.setOnAction((e1) -> {
-            MediaPlayer.Status status = mediaPlayer.getStatus();
-            if (status == MediaPlayer.Status.PAUSED
-                    || status == MediaPlayer.Status.READY || status == MediaPlayer.Status.UNKNOWN) {
-                mediaPlayer.play();
-                playButton.setText("暂停");
-            } else if (status == MediaPlayer.Status.PLAYING) {
-                mediaPlayer.pause();
-                playButton.setText("播放");
-            }
-        });
-        return playButton;
-    }
 }

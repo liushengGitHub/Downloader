@@ -32,6 +32,8 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import liusheng.downloadCore.Error;
 
+import static liusheng.downloadCore.util.DownloadPaneUtil.removeListItem;
+
 public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
     private final Logger logger = Logger.getLogger(NewVideoBeanDownloader.class);
     private final Semaphore semaphore;
@@ -101,15 +103,18 @@ public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
                         }
                         flvPath = dirPath.resolve(fileName + ".flv.temp");
                         mp3Path = dirPath.resolve(fileName + ".mp3.temp");
+                        Path filePath = dirPath.resolve(fileName + ".mp4");
                         // 下载视频文件
                         Path flvPathTemp = flvPath;
+
+
 
 
                         AtomicLong size = newVideoBean.getSize();
                         AtomicLong allSize = newVideoBean.getAllSize();
                         AtomicInteger parts = newVideoBean.getPartSize();
                         StateCountDownLatch state = new StateCountDownLatch(2);
-
+                        newVideoBean.setFilePath(filePath);
                         // 设置开始执行
                         ListExecutorService.commonExecutorServicehelp().execute(() -> {
                             downloadMethods(itemPaneLocal, refererUrl, vbUrls, vbUrl, dirPath, flvPathTemp, size, allSize, parts, state);
@@ -153,7 +158,8 @@ public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
                         try {
                             logger.info("flvPath : " + Files.size(flvPath) + " == mp3Path :" + Files.size(mp3Path));
                             semaphore.acquire();
-                            new MergeAudioAndVideoFile(flvPath, mp3Path, fileName).run();
+
+                            new MergeAudioAndVideoFile(flvPath, mp3Path, filePath.toString()).run();
                         } catch (Throwable e) {
                             merge = false;
                             logger.info("合并失败",e);
@@ -213,14 +219,5 @@ public class NewVideoBeanDownloader implements Downloader<NewVideoBean> {
         }
     }
 
-    private void removeListItem(NewVideoBean newVideoBean) {
-        DownloadItemPane itemPane = (DownloadItemPane) newVideoBean.getPane();
-        JFXListView<DownloadItemPaneEntity> listView = itemPane.getListView();
-        ObservableList<DownloadItemPaneEntity> items = listView.getItems();
-        int i = items.indexOf(itemPane.getEntity());
-        if (i != -1) {
-            newVideoBean.getDownloadPane().getDownloadedPane().getDownloadedPaneContainer().getListView().getItems().add(items.get(i));
-            items.remove(i);
-        }
-    }
+
 }
