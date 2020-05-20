@@ -13,6 +13,7 @@ import liusheng.downloadCore.Error;
 import liusheng.downloadCore.RetryDownloader;
 import liusheng.downloadCore.entity.DownloadItemPaneEntity;
 import liusheng.downloadCore.pane.DownloadItemPane;
+import liusheng.downloadCore.util.StatusUtil;
 import liusheng.downloadInterface.DownloaderController;
 import org.apache.log4j.Logger;
 
@@ -164,7 +165,7 @@ public class OldVideoBeanDownloader implements Downloader<OldVideoBean> {
                         itemPaneLocal.setState(DownloaderController.FINISHED);
 
                     } catch (Throwable throwable) {
-                        itemPaneLocal.setState(DownloaderController.EXCEPTION);
+                        StatusUtil.exception(itemPane);
                         throw new RuntimeException(throwable);
                     } finally {
                         if (!b || !merge) {
